@@ -1,0 +1,13 @@
+<h1>Hello World</h1>
+<script src="../commonjs/outsidejs.js"></script>
+
+<script>
+window.onload = function(){
+    sendToApp("onload");
+}
+
+function receiveFromApp(data) {
+    MLog("index.html receiveFromApp data=" + data);
+}
+
+</script>
