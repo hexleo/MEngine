@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import com.hexleo.mengine.activity.WebViewActivity;
 import com.hexleo.mengine.application.BaseApplication;
 import com.hexleo.mengine.engine.bridge.MeJsBridge;
+import com.hexleo.mengine.engine.config.MeBundleConfig;
 import com.hexleo.mengine.engine.jscore.MeJsContextFactory;
 import com.hexleo.mengine.engine.jscore.MeJsContext;
 import com.hexleo.mengine.engine.webview.MeWebView;
@@ -16,7 +17,6 @@ import com.hexleo.mengine.util.MLog;
 import com.hexleo.mengine.util.ThreadManager;
 
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 

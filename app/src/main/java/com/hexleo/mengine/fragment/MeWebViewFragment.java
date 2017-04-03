@@ -1,5 +1,6 @@
 package com.hexleo.mengine.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -16,6 +17,7 @@ import com.hexleo.mengine.engine.jscore.function.appfun.CommonJCF;
 import com.hexleo.mengine.engine.jscore.function.appfun.RefreshJCF;
 import com.hexleo.mengine.engine.webview.MeWebView;
 import com.hexleo.mengine.view.MeRefreshView;
+import com.hexleo.mengine.widget.NavBarView;
 
 
 /**
@@ -32,11 +34,14 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
     private MEngineBundle mMeBundle;
     private ViewGroup mViewContent;
     private MeRefreshView mRefreshLayout;
+    private NavBarView mNavBarView;
     private Handler mHandler;
 
     public MeWebViewFragment() {
         mInitParam = "";
         mHandler = new Handler(Looper.getMainLooper());
+        // 防止转屏后fragment重新创建, onDestroy需要被onDetach取代
+        setRetainInstance(true);
     }
 
     public void setMeBundle(MEngineBundle meBundle) {
@@ -48,10 +53,8 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // 防止转屏后fragment重新创建
-        setRetainInstance(true);
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
     @Nullable
@@ -65,6 +68,15 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
     }
 
     private void initView(View view) {
+        mNavBarView = (NavBarView) view.findViewById(R.id.header_nav);
+        mNavBarView.setBackgroundColor(mMeBundle.getBundleConfig().titleColor);
+        mNavBarView.setTitle(mMeBundle.getBundleConfig().title);
+        mNavBarView.setOnBackClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
         mViewContent = (ViewGroup) view.findViewById(R.id.content);
         mRefreshLayout = (MeRefreshView) view.findViewById(R.id.refresh_layout);
         enableRefresh = mMeBundle.getBundleConfig().enableRefresh;
@@ -74,9 +86,10 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
         MEngine.getInstance().getWebView(mMeBundle.getBundleName(), this);
     }
 
+
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDetach() {
+        super.onDetach();
         mViewContent.removeAllViews();
         if (mMeBundle != null) {
             mMeBundle.destory();

@@ -2,6 +2,7 @@ package com.hexleo.mengine.engine;
 
 import android.app.Application;
 
+import com.hexleo.mengine.application.BaseApplication;
 import com.hexleo.mengine.engine.webview.MeWebView;
 import com.hexleo.mengine.fragment.MeWebViewFragment;
 import com.hexleo.mengine.util.ThreadManager;
@@ -30,7 +31,7 @@ public class MEngine {
     }
 
 
-    public static void initialize(final Application app, final InitFinishedCallBack callBack) {
+    public static void initialize(final BaseApplication app, final InitFinishedCallBack callBack) {
         ThreadManager.post(new Runnable() {
             @Override
             public void run() {
@@ -40,7 +41,7 @@ public class MEngine {
         });
     }
 
-    private void init(Application app) {
+    private void init(BaseApplication app) {
         mMEngineManager = new MEngineManager(app);
     }
 

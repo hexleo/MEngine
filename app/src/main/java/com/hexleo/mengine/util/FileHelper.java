@@ -1,6 +1,7 @@
 package com.hexleo.mengine.util;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 
 import com.hexleo.mengine.engine.constant.MeConstant;
 
@@ -42,10 +43,23 @@ public class FileHelper {
                 fileContext.append(line);
                 fileContext.append("\n");
             }
+            inputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return fileContext.toString();
+    }
+
+    public static Drawable getAssetResDrawable(String resPath, Context context) {
+        Drawable drawable = null;
+        try {
+            InputStream inputStream = context.getResources().getAssets().open(resPath);
+            drawable = Drawable.createFromStream(inputStream, null);
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return drawable;
     }
 
 }

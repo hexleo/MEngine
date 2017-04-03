@@ -2,8 +2,10 @@ package com.hexleo.mengine.engine;
 
 import android.app.Application;
 
+import com.hexleo.mengine.application.BaseApplication;
+import com.hexleo.mengine.engine.config.MEngineConfig;
+import com.hexleo.mengine.engine.config.MeBundleConfig;
 import com.hexleo.mengine.engine.webview.MeWebView;
-import com.hexleo.mengine.fragment.MeWebViewFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +18,10 @@ public class MEngineManager {
     private MEnginePool mEnginePool;
 
     // 在线程中初始化
-    public MEngineManager(Application app) {
-
+    public MEngineManager(BaseApplication app) {
         // 获取配置文件
-        List<MeBundleConfig> list = new ArrayList<>();
-        list.add(new MeBundleConfig("bundle1", false, false, 0xff0000ff));
-        list.add(new MeBundleConfig("bundle2", false, true, 0xff0000ff));
-        mEnginePool = new MEnginePool(list);
+        MEngineConfig.getInstance().paseConfigJson(app);
+        mEnginePool = new MEnginePool(MEngineConfig.getInstance().getBundleConfigs());
     }
 
     public void getWebView(String name, MeWebView.MeWebViewListener listener) {

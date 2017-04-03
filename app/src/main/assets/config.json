@@ -1,0 +1,33 @@
+{
+  "pageConfig":{
+    "nav":[
+      {
+        "bundleName":"bundle1",
+        "navIcon":"icon.png"
+      },
+      {
+        "bundleName":"bundle2",
+        "navIcon":"icon.png"
+      }
+    ]
+  },
+  "globalConfig":{
+    "titleColor": "#00ff00",
+    "refreshColor": "#0000ff"
+  },
+  "bundleConfig":[
+    {
+      "bundleName":"bundle1",
+      "title":"bundle1_title",
+      "lazyInit":"false",
+      "enableRefresh":"false"
+    },
+    {
+      "bundleName":"bundle2",
+      "title":"bundle2_title",
+      "lazyInit":"false",
+      "enableRefresh":"true"
+    }
+  ]
+
+}
