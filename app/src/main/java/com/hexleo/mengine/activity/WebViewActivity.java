@@ -15,13 +15,14 @@ import com.hexleo.mengine.fragment.MeWebViewFragment;
  * Created by hexleo on 2017/1/18.
  */
 
-public class WebViewActivity extends Activity {
+public class WebViewActivity extends BaseActivity {
 
     public static void create(Context context, String bundleName, String param) {
         if (context != null && MEngine.getInstance().getBundle(bundleName) != null) {
             Intent intent = new Intent(context, WebViewActivity.class);
             intent.putExtra(MeConstant.INTENT_PARAM_BUNDLE, bundleName);
             intent.putExtra(MeConstant.INTENT_PARAM_DATA, param);
+            intent.putExtra(MeConstant.INTENT_PARAM_NEED_NAVBAR, true);
             context.startActivity(intent);
         }
     }
@@ -30,17 +31,10 @@ public class WebViewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
-        Bundle bundle = getIntent().getExtras();
-        String bundleName = bundle.getString(MeConstant.INTENT_PARAM_BUNDLE);
-        String param = bundle.getString(MeConstant.INTENT_PARAM_DATA);
-        param = param == null ? "" : param;
-        MEngineBundle meBundle = MEngine.getInstance().getBundle(bundleName);
-        meBundle.setActivity(this);
-        if (savedInstanceState == null && meBundle != null) {
+        if (savedInstanceState == null) {
             MeWebViewFragment fragment = new MeWebViewFragment();
-            fragment.setMeBundle(meBundle);
-            fragment.setInitParam(param);
-            getFragmentManager().beginTransaction().replace(R.id.content_fragment, fragment).commit();
+            fragment.setArguments(getIntent().getExtras());
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, fragment).commit();
         }
     }
 

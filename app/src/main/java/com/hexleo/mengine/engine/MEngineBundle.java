@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 
-import com.hexleo.mengine.activity.WebViewActivity;
+import com.hexleo.mengine.activity.BaseActivity;
 import com.hexleo.mengine.application.BaseApplication;
 import com.hexleo.mengine.engine.bridge.MeJsBridge;
 import com.hexleo.mengine.engine.config.MeBundleConfig;
@@ -39,7 +39,7 @@ public class MEngineBundle {
     private MeJsBridge mJsBridge;
     private MeJsContext mJsContext;
     private MeWebView mWebView;
-    private WeakReference<WebViewActivity> mActivityRef;
+    private WeakReference<BaseActivity> mActivityRef;
 
     private Handler mHandler = new Handler(Looper.getMainLooper());
 
@@ -76,11 +76,11 @@ public class MEngineBundle {
         return value == null? "" : value;
     }
 
-    public void setActivity(WebViewActivity activity) {
+    public void setActivity(BaseActivity activity) {
         mActivityRef = new WeakReference<>(activity);
     }
 
-    public WebViewActivity getActivity() {
+    public BaseActivity getActivity() {
         return mActivityRef.get();
     }
 

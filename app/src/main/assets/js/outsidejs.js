@@ -1,6 +1,6 @@
 
 
 function callOutsideJs() {
-    MLog("move to commonjs");
+    MLog("callOutsideJs");
 }
 

@@ -11,11 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hexleo.mengine.R;
+import com.hexleo.mengine.activity.BaseActivity;
+import com.hexleo.mengine.activity.WebViewActivity;
 import com.hexleo.mengine.engine.MEngine;
 import com.hexleo.mengine.engine.MEngineBundle;
+import com.hexleo.mengine.engine.config.MEngineConfig;
+import com.hexleo.mengine.engine.constant.MeConstant;
 import com.hexleo.mengine.engine.jscore.function.appfun.CommonJCF;
 import com.hexleo.mengine.engine.jscore.function.appfun.RefreshJCF;
 import com.hexleo.mengine.engine.webview.MeWebView;
+import com.hexleo.mengine.util.MLog;
 import com.hexleo.mengine.view.MeRefreshView;
 import com.hexleo.mengine.widget.NavBarView;
 
@@ -35,6 +40,7 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
     private ViewGroup mViewContent;
     private MeRefreshView mRefreshLayout;
     private NavBarView mNavBarView;
+    private boolean isNeedNavBar;
     private Handler mHandler;
 
     public MeWebViewFragment() {
@@ -55,16 +61,31 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null && mRootView == null) {
+            initData();
             mRootView = inflater.inflate(R.layout.fragment_webview, container, false);
             initView(mRootView);
         }
         return mRootView;
+    }
+
+    private void initData() {
+        Bundle bundle = getArguments();
+        String bundleName = bundle.getString(MeConstant.INTENT_PARAM_BUNDLE);
+        String param = bundle.getString(MeConstant.INTENT_PARAM_DATA);
+        param = param == null ? "" : param;
+        isNeedNavBar = bundle.getBoolean(MeConstant.INTENT_PARAM_NEED_NAVBAR, true);
+        MEngineBundle meBundle = MEngine.getInstance().getBundle(bundleName);
+        meBundle.setActivity((BaseActivity) getActivity());
+        setMeBundle(meBundle);
+        setInitParam(param);
+        MLog.d(TAG, "bundleName=" + bundleName);
     }
 
     private void initView(View view) {
@@ -77,6 +98,9 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
                 getActivity().finish();
             }
         });
+        if (!isNeedNavBar) {
+            mNavBarView.setVisibility(View.GONE);
+        }
         mViewContent = (ViewGroup) view.findViewById(R.id.content);
         mRefreshLayout = (MeRefreshView) view.findViewById(R.id.refresh_layout);
         enableRefresh = mMeBundle.getBundleConfig().enableRefresh;

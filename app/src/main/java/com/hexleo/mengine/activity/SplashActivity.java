@@ -12,7 +12,7 @@ import com.hexleo.mengine.engine.constant.MeConstant;
 /**
  * 闪屏Activity 完成初始化工作才进行跳转
  */
-public class SplashActivity extends Activity {
+public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,8 @@ public class SplashActivity extends Activity {
         MEngine.initialize(BaseApplication.getBaseApplication(), new MEngine.InitFinishedCallBack() {
             @Override
             public void onFinish() {
-                WebViewActivity.create(SplashActivity.this, "bundle1", null);
+                // WebViewActivity.create(SplashActivity.this, "bundle1", null);
+                TabHostActivity.create(SplashActivity.this);
                 finish();
             }
         });
