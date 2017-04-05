@@ -13,12 +13,14 @@ public class JsonPageConfig extends Json{
     public static class JsonNavPageConfig extends Json {
         public String bundleName;
         public String navIcon;
+        public String navName;
 
         @Override
         public String toString() {
             StringBuilder sb = new StringBuilder();
             sb.append("bundleName=" + bundleName);
             sb.append(",navIcon=" + navIcon);
+            sb.append(",navName=" + navName);
             return sb.toString();
         }
     }

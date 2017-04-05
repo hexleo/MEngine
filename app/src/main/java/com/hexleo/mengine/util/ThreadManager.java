@@ -15,12 +15,18 @@ public class ThreadManager {
 
     private static ThreadManager sInstance;
 
+    // 通用HandlerThread
+    private HandlerThread mCommonThread;
+    private Handler mCommonHandler;
     // app.js的运行线程
     private HandlerThread mAppJsRuntiomThread;
     private Handler mAppJsRuntiom;
     private Handler mMainHandler;
 
     private ThreadManager() {
+        mCommonThread = new HandlerThread("COMMON_THREAD");
+        mCommonThread.start();
+        mCommonHandler = new Handler(mCommonThread.getLooper());
         mAppJsRuntiomThread = new HandlerThread("APP_JS_RUNTIME");
         mAppJsRuntiomThread.start();
         mAppJsRuntiom = new Handler(mAppJsRuntiomThread.getLooper());
@@ -40,6 +46,10 @@ public class ThreadManager {
     // TODO 先简单实现
     public static void post(Runnable runnable) {
         new Thread(runnable, THREAD_NAME + runnable.hashCode()).start();
+    }
+
+    public static void postDelay(Runnable runnable, long delay) {
+        sInstance.mCommonHandler.postDelayed(runnable, delay);
     }
 
     /**

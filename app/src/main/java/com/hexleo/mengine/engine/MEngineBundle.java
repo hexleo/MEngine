@@ -35,6 +35,7 @@ public class MEngineBundle {
     private MeBundleConfig mConfig;
     private String mJsFileCache;
     private String mIndexHtmlPath;
+    private boolean isInit; // bundle是否已经初始化
 
     private MeJsBridge mJsBridge;
     private MeJsContext mJsContext;
@@ -44,6 +45,7 @@ public class MEngineBundle {
     private Handler mHandler = new Handler(Looper.getMainLooper());
 
     private MEngineBundle(MeBundleConfig config) {
+        isInit = false;
         mConfig = config;
         mBundleName = config.bundleName;
         mActivityRef = new WeakReference<>(null);
@@ -89,6 +91,7 @@ public class MEngineBundle {
         initJsContext();
         // JsContext必须要在WebView初始化前完成初始化
         initWebView(listener);
+        isInit = true;
     }
 
     private void initJsBridge() {
@@ -126,7 +129,10 @@ public class MEngineBundle {
     }
 
     public void getWebView(final MeWebView.MeWebViewListener listener) {
-        if (mConfig.lazyInit) {
+        if (listener == null) {
+            return;
+        }
+        if (mConfig.lazyInit && !isInit) {
             MLog.d(TAG, "getWebView webview lazy init");
             ThreadManager.post(new Runnable() {
                 @Override
@@ -145,14 +151,9 @@ public class MEngineBundle {
     }
 
     /**
-     * 页面关闭时，如果为懒加载的页面，则需要销毁相应对象
+     * 销毁时回调
      */
     public void destory() {
-        if (mConfig.lazyInit) {
-            mJsBridge = null;
-            mJsContext = null;
-            mWebView = null;
-        }
     }
 
 }

@@ -18,8 +18,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.hexleo.mengine.activity.WebViewActivity" />
-        <activity android:name="com.hexleo.mengine.activity.TabHostActivity" />
+        <activity android:name="com.hexleo.mengine.activity.WebViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.hexleo.mengine.activity.TabHostActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

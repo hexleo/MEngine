@@ -3,15 +3,18 @@
     "nav":[
       {
         "bundleName":"bundleNav1",
-        "navIcon":"icon.png"
+        "navIcon":"icon.png",
+        "navName":"导航一"
       },
       {
         "bundleName":"bundleNav2",
-        "navIcon":"icon.png"
+        "navIcon":"icon.png",
+        "navName":"导航二"
       },
       {
         "bundleName":"bundleNav3",
-        "navIcon":"icon.png"
+        "navIcon":"icon.png",
+        "navName":"导航三"
       }
     ]
   },

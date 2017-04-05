@@ -1,10 +1,6 @@
 package com.hexleo.mengine.engine;
 
-import android.app.Application;
-
-import com.hexleo.mengine.application.BaseApplication;
 import com.hexleo.mengine.engine.webview.MeWebView;
-import com.hexleo.mengine.fragment.MeWebViewFragment;
 import com.hexleo.mengine.util.ThreadManager;
 
 /**
@@ -13,10 +9,8 @@ import com.hexleo.mengine.util.ThreadManager;
 
 public class MEngine {
     public static MEngine sInstance;
-    private MEngineManager mMEngineManager;
 
     private MEngine() {
-
     }
 
     public static MEngine getInstance() {
@@ -31,30 +25,30 @@ public class MEngine {
     }
 
 
-    public static void initialize(final BaseApplication app, final InitFinishedCallBack callBack) {
+    public static void initialize(final InitCallBack callBack) {
         ThreadManager.post(new Runnable() {
             @Override
             public void run() {
-                getInstance().init(app);
-                callBack.onFinish();
+                getInstance().init(callBack);
             }
         });
     }
 
-    private void init(BaseApplication app) {
-        mMEngineManager = new MEngineManager(app);
+    private void init(InitCallBack initCallBack) {
+        MEngineManager.getInstance().init(initCallBack);
     }
 
     public void getWebView(String bundleName, MeWebView.MeWebViewListener listener) {
-        mMEngineManager.getWebView(bundleName, listener);
+        MEngineManager.getInstance().getWebView(bundleName, listener);
     }
 
     public MEngineBundle getBundle(String bundleName) {
-        return mMEngineManager.getBundle(bundleName);
+        return MEngineManager.getInstance().getBundle(bundleName);
     }
 
 
-    public interface InitFinishedCallBack {
+    public interface InitCallBack {
+        void onConfigReady();
         void onFinish();
     }
 

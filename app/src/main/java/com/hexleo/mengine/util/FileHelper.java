@@ -7,6 +7,7 @@ import com.hexleo.mengine.engine.constant.MeConstant;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -44,6 +45,8 @@ public class FileHelper {
                 fileContext.append("\n");
             }
             inputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

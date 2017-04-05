@@ -55,7 +55,7 @@ public class TabHostActivity extends BaseActivity {
             bundle.putString(MeConstant.INTENT_PARAM_BUNDLE, navPage.bundleName);
             bundle.putString(MeConstant.INTENT_PARAM_DATA, "");
             bundle.putBoolean(MeConstant.INTENT_PARAM_NEED_NAVBAR, false);
-            addFragment(navPage.bundleName, MeWebViewFragment.class, navPage.icon, navPage.bundleName, bundle);
+            addFragment(navPage.bundleName, MeWebViewFragment.class, navPage.navIcon, navPage.navName, bundle);
         }
     }
 

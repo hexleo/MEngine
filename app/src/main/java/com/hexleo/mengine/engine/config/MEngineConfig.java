@@ -60,7 +60,7 @@ public class MEngineConfig {
         return mBundleConfigs;
     }
 
-    public void paseConfigJson(BaseApplication app) {
+    public void parseConfigJson(BaseApplication app) {
         String configJson = FileHelper.getAssetFileContext(MeConstant.CONFIG, app);
         JsonConfig config = new Gson().fromJson(configJson, JsonConfig.class);
         mPageConfig.init(config.pageConfig);

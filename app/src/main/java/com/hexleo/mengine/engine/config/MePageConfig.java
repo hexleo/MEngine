@@ -26,7 +26,7 @@ public class MePageConfig {
         if (pageConfig.nav != null && pageConfig.nav.size() > 0) {
             navPages.clear();
             for (JsonPageConfig.JsonNavPageConfig nav : pageConfig.nav) {
-                navPages.add(new NavPage(nav.bundleName, nav.navIcon));
+                navPages.add(new NavPage(nav.bundleName, nav.navIcon, nav.navName));
             }
         }
     }
@@ -37,11 +37,13 @@ public class MePageConfig {
 
     public static class NavPage {
         public String bundleName;
-        public Drawable icon;
+        public Drawable navIcon;
+        public String navName;
 
-        public NavPage(String bundleName, String icon) {
+        public NavPage(String bundleName, String icon, String navName) {
             this.bundleName = bundleName;
-            this.icon = FileHelper.getAssetResDrawable(MeConstant.RES_PATH + icon, BaseApplication.getBaseApplication());
+            this.navIcon = FileHelper.getAssetResDrawable(MeConstant.RES_PATH + icon, BaseApplication.getBaseApplication());
+            this.navName = navName;
         }
     }
 }
