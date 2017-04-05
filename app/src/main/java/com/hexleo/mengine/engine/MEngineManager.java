@@ -20,6 +20,7 @@ public class MEngineManager {
     private static MEngineManager sInstance;
 
     private final Object mLockObj = new Object();
+    private volatile boolean isTimeToStart;
     private MEnginePool mEnginePool;
     private MEngine.InitCallBack mInitCallBack;
     private volatile int mInitWebViewCount; // 启动时需要初始化的网页数量
@@ -69,10 +70,10 @@ public class MEngineManager {
         ThreadManager.post(new Runnable() {
             @Override
             public void run() {
-                long startTime = SystemClock.uptimeMillis();
+                isTimeToStart = false;
                 MLog.d(TAG, "mInitWebViewCount=" + mInitWebViewCount);
                 synchronized (mLockObj) {
-                    while (mInitWebViewCount != 0 && (SystemClock.uptimeMillis() - startTime) < MAX_START_TIME) {
+                    while (mInitWebViewCount != 0 && !isTimeToStart) {
                         try {
                             mLockObj.wait();
                             MLog.d(TAG, "mInitWebViewCount=" + mInitWebViewCount);
@@ -89,6 +90,7 @@ public class MEngineManager {
         ThreadManager.postDelay(new Runnable() {
             @Override
             public void run() {
+                isTimeToStart = true;
                 notifyWebViewReady();
             }
         }, MAX_START_TIME);

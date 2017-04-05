@@ -15,6 +15,8 @@ function onRefresh() {
     MLog("app.js MLog onRefresh");
     var v = globalVarRead("key1");
     MLog("app.js MLog globalVar(key1)=" + v);
+    common1();
+    common2();
     finishRefresh();
 }
 

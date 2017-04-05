@@ -1,6 +1,7 @@
 package com.hexleo.mengine.engine.jscore;
 
 import android.os.Looper;
+import android.text.TextUtils;
 
 import com.hexleo.mengine.engine.exception.NotWorkThread;
 import com.hexleo.mengine.util.MLog;
@@ -16,6 +17,9 @@ public class MeJsContext extends JSContext {
     public void runScript(String script) {
         if (Looper.myLooper() == Looper.getMainLooper()) {
             throw new NotWorkThread();
+        }
+        if (TextUtils.isEmpty(script)) {
+            return;
         }
         try {
             evaluateScript(script);

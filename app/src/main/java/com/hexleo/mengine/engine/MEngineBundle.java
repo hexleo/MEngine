@@ -8,6 +8,7 @@ import com.hexleo.mengine.activity.BaseActivity;
 import com.hexleo.mengine.application.BaseApplication;
 import com.hexleo.mengine.engine.bridge.MeJsBridge;
 import com.hexleo.mengine.engine.config.MeBundleConfig;
+import com.hexleo.mengine.engine.constant.MeConstant;
 import com.hexleo.mengine.engine.jscore.MeJsContextFactory;
 import com.hexleo.mengine.engine.jscore.MeJsContext;
 import com.hexleo.mengine.engine.webview.MeWebView;
@@ -16,6 +17,8 @@ import com.hexleo.mengine.util.FileHelper;
 import com.hexleo.mengine.util.MLog;
 import com.hexleo.mengine.util.ThreadManager;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.Hashtable;
 import java.util.Map;
@@ -30,6 +33,8 @@ public class MEngineBundle {
 
     // 整个App共享全局变量
     private static Map<String, String> sGlobalVar = new Hashtable<>();
+    private static String sCommonJsFileCache;
+    private static boolean sIsCommonInited = false;
 
     private String mBundleName;
     private MeBundleConfig mConfig;
@@ -104,12 +109,35 @@ public class MEngineBundle {
         if (TextUtils.isEmpty(mJsFileCache)) {
             mJsFileCache = FileHelper.getAppJs(mBundleName, BaseApplication.getBaseApplication());
         }
+        loadCommonAppJs();
         // 创建JsContext
         mJsContext = MeJsContextFactory.getInstance().create();
         // JsBridge加载JsContext
         mJsBridge.initJsContext(mJsContext);
-        // 最后加载文件
+        // 加载common文件夹下的文件
+        mJsContext.runScript(sCommonJsFileCache);
+        // 加载app.js文件
         mJsContext.runScript(mJsFileCache);
+    }
+
+    private void loadCommonAppJs() {
+        if (!sIsCommonInited) {
+            try {
+                String[] files = BaseApplication.getBaseApplication().getAssets().list(MeConstant.COMMON_PATH);
+                if (files != null && files.length > 0) {
+                    StringBuilder sb = new StringBuilder();
+                    for (String item : files) {
+                        MLog.d(TAG, "commonJs=" + item);
+                        sb.append(FileHelper.getAssetFileContext(MeConstant.COMMON_PATH + File.separator + item,
+                                BaseApplication.getBaseApplication()));
+                    }
+                    sCommonJsFileCache = sb.toString();
+                }
+                sIsCommonInited = true;
+            } catch (IOException e) {
+                MLog.e(TAG, e.getMessage());
+            }
+        }
     }
 
     private void initWebView(final MeWebView.MeWebViewListener listener) {
