@@ -16,7 +16,11 @@
         "navIcon":"icon.png",
         "navName":"导航三"
       }
-    ]
+    ],
+    "splash":{
+      "splashIcon":"icon.png",
+      "splashBgColor":"#0000ff"
+    }
   },
   "globalConfig":{
     "titleColor": "#00ff00",

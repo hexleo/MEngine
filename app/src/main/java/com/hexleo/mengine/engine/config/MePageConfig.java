@@ -1,5 +1,6 @@
 package com.hexleo.mengine.engine.config;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 
 import com.hexleo.mengine.application.BaseApplication;
@@ -18,6 +19,7 @@ import java.util.List;
 public class MePageConfig {
     // 首页Page
     private List<NavPage> navPages = new ArrayList<>();
+    private SplashPage splashPage;
 
     public void init(JsonPageConfig pageConfig) {
         if (pageConfig == null) {
@@ -29,10 +31,15 @@ public class MePageConfig {
                 navPages.add(new NavPage(nav.bundleName, nav.navIcon, nav.navName));
             }
         }
+        splashPage = new SplashPage(pageConfig.splash.splashIcon, pageConfig.splash.splashBgColor);
     }
 
     public List<NavPage> getNavPages() {
         return navPages;
+    }
+
+    public SplashPage getSplashPage() {
+        return splashPage;
     }
 
     public static class NavPage {
@@ -44,6 +51,16 @@ public class MePageConfig {
             this.bundleName = bundleName;
             this.navIcon = FileHelper.getAssetResDrawable(MeConstant.RES_PATH + icon, BaseApplication.getBaseApplication());
             this.navName = navName;
+        }
+    }
+
+    public static class SplashPage {
+        public String splashIcon;
+        public int splashBgColor;
+
+        public SplashPage(String splashIcon, String splashBgColor) {
+            this.splashIcon = splashIcon;
+            this.splashBgColor = Color.parseColor(splashBgColor);
         }
     }
 }
