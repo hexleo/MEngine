@@ -1,7 +1,9 @@
 package com.hexleo.mengine.engine.jscore.function.appfun;
 
+import com.google.gson.Gson;
 import com.hexleo.mengine.activity.WebViewActivity;
 import com.hexleo.mengine.engine.MEngineBundle;
+import com.hexleo.mengine.engine.config.json.Json;
 import com.hexleo.mengine.engine.jscore.function.JsContextFunction;
 import com.hexleo.mengine.engine.jscore.function.webviewfun.CommonJWF;
 import com.hexleo.mengine.engine.webview.MeWebView;
@@ -9,6 +11,9 @@ import com.hexleo.mengine.util.MLog;
 import com.hexleo.mengine.util.ThreadManager;
 
 import org.liquidplayer.webkit.javascriptcore.JSFunction;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * app.js中可以调用的公共方法
@@ -31,11 +36,15 @@ public class CommonJCF extends JsContextFunction {
     private static final String FUNC_PIPE_READ = "receiveFromWebView";
     // 跳转新的页面
     private static final String FUNC_JUMP_TO = "jumpTo";
+    // 回调统一调用接口
+    private static final String FUNC_CALLBACK_LISTENER = "callBackListener";
 
     // 被调用 启动被调用
     public static final String ACTION_INIT = "init";
     // 被调用 管道度
     public static final String ACTION_PIPE_READ = "pipe";
+    // 被调用 回调
+    public static final String ACTION_CALLBACK = "callback";
 
 
     public static String getFuncName() {
@@ -56,6 +65,9 @@ public class CommonJCF extends JsContextFunction {
                 break;
             case ACTION_PIPE_READ:
                 actionPipeRead(data);
+                break;
+            case ACTION_CALLBACK:
+                actionCallBack(data);
                 break;
             default:
                 canHandle = false;
@@ -147,6 +159,24 @@ public class CommonJCF extends JsContextFunction {
                 mJsBridge.getJsContext().runScript(genJsCall(FUNC_PIPE_READ, data));
             }
         });
+    }
+
+    /**
+     * app.js的回调调用
+     * @param data
+     */
+    public void actionCallBack(final String data) {
+        ThreadManager.appJsPost(new Runnable() {
+            @Override
+            public void run() {
+                CommonParamJson paramJson = new Gson().fromJson(data, CommonParamJson.class);
+                mJsBridge.getJsContext().runScript(genJsCall(FUNC_CALLBACK_LISTENER, paramJson.params));
+            }
+        });
+    }
+
+    public static class CommonParamJson extends Json {
+        List<String> params;
     }
 
 }

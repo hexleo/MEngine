@@ -11,5 +11,16 @@ window.onload = function(){
     MLog("bundle2 onload");
 }
 
+function receiveFromApp(data) {
+
+    MLog("index.html receiveFromApp data=" + data);
+    if (data == "page_start") {
+        sendToApp("jump");
+    }
+    param = JSON.parse(data);
+    if (param["action"] == "refresh") {
+        document.body.innerHTML = decodeURIComponent(param["uiData"]);
+    }
+}
 
 </script>

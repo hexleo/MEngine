@@ -24,7 +24,7 @@ public class MeJsContext extends JSContext {
         try {
             evaluateScript(script);
         } catch (Throwable e) {
-            MLog.e("MeJsContext" , "runScript exception\n" + e.toString());
+            MLog.e("MeJsContext" , "runScript exception = " + e.toString());
         }
     }
 }

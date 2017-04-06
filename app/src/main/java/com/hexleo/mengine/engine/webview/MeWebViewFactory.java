@@ -1,6 +1,7 @@
 package com.hexleo.mengine.engine.webview;
 
 import android.content.Context;
+import android.view.ViewGroup;
 import android.webkit.WebSettings;
 
 import com.hexleo.mengine.engine.bridge.MeJsBridge;
@@ -33,6 +34,7 @@ public class MeWebViewFactory {
 
     public MeWebView create(Context context, MeJsBridge jsBridge) {
         MeWebView meWebView = new MeWebView(context);
+        meWebView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         initWebViewSetting(meWebView);
         initWebViewClient(meWebView);
         initWebChromeClient(meWebView, jsBridge);

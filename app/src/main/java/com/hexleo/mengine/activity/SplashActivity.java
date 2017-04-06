@@ -32,6 +32,7 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
         root = findViewById(R.id.root);
         icon = (ImageView) findViewById(R.id.icon);
+        // 初始化逻辑应该转移到Application中，这里只是暂时的
         MEngine.initialize(new MEngine.InitCallBack() {
             @Override
             public void onConfigReady() {

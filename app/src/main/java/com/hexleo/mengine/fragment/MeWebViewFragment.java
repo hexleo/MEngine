@@ -128,7 +128,7 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
         mHandler.post(new Runnable() {
             @Override
             public void run() {
-                mViewContent.addView(mWebView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                mViewContent.addView(mWebView);
             }
         });
     }

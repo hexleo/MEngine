@@ -1,7 +1,5 @@
 package com.hexleo.mengine.engine;
 
-import android.os.SystemClock;
-
 import com.hexleo.mengine.application.BaseApplication;
 import com.hexleo.mengine.engine.config.MEngineConfig;
 import com.hexleo.mengine.engine.config.MeBundleConfig;
