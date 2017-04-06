@@ -24,6 +24,11 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (MEngine.getInstance().isInited()) {
+            TabHostActivity.create(SplashActivity.this);
+            finish();
+            return;
+        }
         setContentView(R.layout.activity_splash);
         root = findViewById(R.id.root);
         icon = (ImageView) findViewById(R.id.icon);

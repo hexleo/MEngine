@@ -24,14 +24,19 @@ public class MEngine {
         return sInstance;
     }
 
+    public boolean isInited() {
+        return MEngineManager.getInstance().isInited();
+    }
 
     public static void initialize(final InitCallBack callBack) {
-        ThreadManager.post(new Runnable() {
-            @Override
-            public void run() {
-                getInstance().init(callBack);
-            }
-        });
+        if (!MEngineManager.getInstance().isInited()) {
+            ThreadManager.post(new Runnable() {
+                @Override
+                public void run() {
+                    getInstance().init(callBack);
+                }
+            });
+        }
     }
 
     private void init(InitCallBack initCallBack) {

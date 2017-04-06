@@ -20,13 +20,14 @@ public class MEngineManager {
     private static MEngineManager sInstance;
 
     private final Object mLockObj = new Object();
+    private volatile boolean isInited; // 是否已经初始化
     private volatile boolean isTimeToStart;
     private MEnginePool mEnginePool;
     private MEngine.InitCallBack mInitCallBack;
     private volatile int mInitWebViewCount; // 启动时需要初始化的网页数量
 
     private MEngineManager() {
-
+        isInited = false;
     }
 
     public static MEngineManager getInstance() {
@@ -40,8 +41,13 @@ public class MEngineManager {
         return sInstance;
     }
 
+    public boolean isInited() {
+        return isInited;
+    }
+
     // 在线程中初始化
     public void init(MEngine.InitCallBack initCallBack) {
+        isInited = true;
         mInitCallBack = initCallBack;
         // 获取配置文件
         MEngineConfig.getInstance().parseConfigJson(BaseApplication.getBaseApplication());
