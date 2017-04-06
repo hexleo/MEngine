@@ -3,12 +3,30 @@
 
     <item
         is-multidex="false"
+        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\com\google\guava\guava\18.0\guava-18.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cce0823396aa693798f8882e64213b1772032b09">
+        <dex dex="D:\git\MEngine\app\build\intermediates\pre-dexed\debug\guava-18.0_23ae9d619c9ad952ac11ce7bff78df802e3e98c2.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\Administrator\.android\build-cache\bed321fe6ee4994f554223e7d630566b1c73c30f\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
         <dex dex="D:\git\MEngine\app\build\intermediates\pre-dexed\debug\classes_a3422489d8a575b7ffb14d4da067f55c42d2ebf8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Administrator\.android\build-cache\f3a90a2353fd3ccfca9cf722f60ceb3ffaf6f054\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ac045b53684345f4ec8468477e8fc5034d0d2bfd">
+        <dex dex="D:\git\MEngine\app\build\intermediates\pre-dexed\debug\classes_a3f0a28576a5b4670768231e7c2f28fbc0c669ab.jar" />
     </item>
 
 </items>

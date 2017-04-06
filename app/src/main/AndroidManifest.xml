@@ -11,6 +11,12 @@
         android:label="@string/app_name"
         android:hardwareAccelerated="true"
         android:theme="@style/AppTheme">
+
+        <meta-data android:name="DATABASE" android:value="mengine.db" />
+        <meta-data android:name="VERSION" android:value="1" />
+        <meta-data android:name="QUERY_LOG" android:value="false" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.hexleo.mengine.db.entity" />
+
         <activity android:name="com.hexleo.mengine.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

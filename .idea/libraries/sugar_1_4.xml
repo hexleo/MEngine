@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="sugar-1.4">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/f3a90a2353fd3ccfca9cf722f60ceb3ffaf6f054/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/f3a90a2353fd3ccfca9cf722f60ceb3ffaf6f054/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.satyan/sugar/1.4/ac921efcdd0fffb788bb8569c8cdbceb6738a922/sugar-1.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
