@@ -22,6 +22,7 @@ function onRefresh() {
     function(data) {
         // data need decodeURIComponet
         MLog("success:" + decodeURIComponent(data));
+        MLog("read from db:" + keyValueRead("htmlData"));
         finishRefresh();
         param = {"action":"refresh", "uiData":data};
         sendToWebView(JSON.stringify(param));
