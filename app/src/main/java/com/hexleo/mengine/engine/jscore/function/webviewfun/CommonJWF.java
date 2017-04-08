@@ -1,12 +1,9 @@
 package com.hexleo.mengine.engine.jscore.function.webviewfun;
 
-import com.google.gson.Gson;
-import com.hexleo.mengine.engine.MEngineBundle;
 import com.hexleo.mengine.engine.jscore.function.JsConstant;
 import com.hexleo.mengine.engine.jscore.function.JsWebViewFunction;
 import com.hexleo.mengine.engine.jscore.function.appfun.CommonJCF;
 import com.hexleo.mengine.util.MLog;
-import com.hexleo.mengine.util.MeJson;
 
 /**
  * 给WebView提供接口能力

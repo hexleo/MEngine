@@ -5,5 +5,7 @@ package com.hexleo.mengine.application.step;
  */
 
 public class StepConfig {
-    public static final int STEP_THREAD = 1;
+    public static final int STEP_UNCAUGHTEXCEPTION = 1;
+    public static final int STEP_THREAD = 2;
+    public static final int STEP_DB = 3;
 }

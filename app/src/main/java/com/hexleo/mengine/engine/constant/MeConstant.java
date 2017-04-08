@@ -14,6 +14,7 @@ public class MeConstant {
     public static final String INDEX_HTML = "index.html";
     public static final String RES_PATH = "res" + File.separator; // 资源文件位置
     public static final String COMMON_PATH = "common"; // 通用js文件 加载app.js前都会统一加载
+    public static final String LOG_FILE = "app.log";
 
     public static final String INTENT_PARAM_BUNDLE = "param_bundle"; // 需要调整的bundleName
     public static final String INTENT_PARAM_DATA = "param_data"; // 跳转后为页面传递的数据

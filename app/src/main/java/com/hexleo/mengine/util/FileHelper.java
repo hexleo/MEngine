@@ -2,7 +2,9 @@ package com.hexleo.mengine.util;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 
+import com.hexleo.mengine.application.BaseApplication;
 import com.hexleo.mengine.engine.constant.MeConstant;
 
 import java.io.BufferedReader;
@@ -17,6 +19,24 @@ import java.io.InputStreamReader;
  */
 
 public class FileHelper {
+
+    private static String sExtFilesDir;
+
+    public static String getExtFilesDir() {
+        if (TextUtils.isEmpty(sExtFilesDir)) {
+            try {
+                File file = BaseApplication.getBaseApplication().getExternalFilesDir(null);
+                if (file == null) {
+                    file = BaseApplication.getBaseApplication().getFilesDir();
+                }
+                sExtFilesDir = file.getAbsolutePath();
+            } catch (Exception e) {
+                File file = BaseApplication.getBaseApplication().getFilesDir();
+                sExtFilesDir = file.getAbsolutePath();
+            }
+        }
+        return sExtFilesDir;
+    }
 
     public static String getIndexPath(String name) {
         return MeConstant.ASSET_FILE_URI_PREFIX + name + File.separator + MeConstant.INDEX_HTML;

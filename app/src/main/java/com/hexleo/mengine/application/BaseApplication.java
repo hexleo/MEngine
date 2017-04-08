@@ -20,7 +20,6 @@ public class BaseApplication extends Application {
     }
 
     public void init() {
-        SugarContext.init(this);
         mApp = this;
         StepFactory.doStep();
     }

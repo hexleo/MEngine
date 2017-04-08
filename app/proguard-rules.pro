@@ -15,3 +15,18 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-ignorewarnings
+-libraryjars "libs"
+# Keep native methods
+-keepclassmembers class * {
+    native <methods>;
+}
+#native jni接口
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+-keep class org.liquidplayer.webkit.** {*;}
+-keep public class * extends com.orm.SugarRecord{*;}
+-keep public class * extends com.hexleo.mengine.engine.jscore.function.JsFunction{*;}
+-keep public class * extends com.hexleo.mengine.engine.config.json.Json{*;}
