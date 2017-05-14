@@ -1,6 +1,7 @@
 
 function init(param) {
-    MLog("app.js MLog init recv param=" + param);
+    MLog("MEngineBundle app.js MLog init recv param=" + param);
+    MLog("MEngineBundle app.js MLog init recv param=" + param);
 }
 
 function receiveFromWebView(data) {

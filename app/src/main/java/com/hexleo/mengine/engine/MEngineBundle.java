@@ -52,8 +52,6 @@ public class MEngineBundle {
     private MeWebView mWebView;
     private WeakReference<BaseActivity> mActivityRef;
 
-    private Handler mHandler = new Handler(Looper.getMainLooper());
-
     private MEngineBundle(MeBundleConfig config) {
         isInit = false;
         mConfig = config;
@@ -101,6 +99,7 @@ public class MEngineBundle {
     }
 
     private void initRuntime(MeWebView.MeWebViewListener listener) {
+        MLog.d(TAG, " initRuntime " + mBundleName);
         initJsBridge();
         initJsContext();
         // JsContext必须要在WebView初始化前完成初始化
@@ -166,11 +165,12 @@ public class MEngineBundle {
     }
 
     private void initWebView(final MeWebView.MeWebViewListener listener) {
-        mHandler.post(new Runnable() {
+        ThreadManager.mainPost(new Runnable() {
             @Override
             public void run() {
                 mWebView = MeWebViewFactory.getInstance().create(BaseApplication.getBaseApplication(), mJsBridge);
                 // 加载index.html文件  不使用loadData是防止部分机型出现乱码问题
+                MLog.d(TAG, "indexUrl=" + mIndexHtmlPath);
                 mWebView.loadUrl(mIndexHtmlPath);
                 // 文件加载完成后在加载js组件
                 mJsBridge.initWebView(mWebView);

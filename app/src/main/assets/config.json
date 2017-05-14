@@ -38,14 +38,14 @@
       "bundleName":"bundle2",
       "path":"bundle2",
       "title":"bundle2_title",
-      "lazyInit":"false",
+      "lazyInit":"true",
       "enableRefresh":"true"
     },
     {
       "bundleName":"bundle3",
       "path":"bundle2",
       "title":"bundle3_title",
-      "lazyInit":"false",
+      "lazyInit":"true",
       "enableRefresh":"true"
     },
     {

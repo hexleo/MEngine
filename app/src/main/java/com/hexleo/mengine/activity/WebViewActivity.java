@@ -18,11 +18,15 @@ import com.hexleo.mengine.fragment.MeWebViewFragment;
 public class WebViewActivity extends BaseActivity {
 
     public static void create(Context context, String bundleName, String param) {
+        create(context, bundleName, true, param);
+    }
+
+    public static void create(Context context, String bundleName, boolean needNavBar, String param) {
         if (context != null && MEngine.getInstance().getBundle(bundleName) != null) {
             Intent intent = new Intent(context, WebViewActivity.class);
             intent.putExtra(MeConstant.INTENT_PARAM_BUNDLE, bundleName);
             intent.putExtra(MeConstant.INTENT_PARAM_DATA, param);
-            intent.putExtra(MeConstant.INTENT_PARAM_NEED_NAVBAR, true);
+            intent.putExtra(MeConstant.INTENT_PARAM_NEED_NAVBAR, needNavBar);
             context.startActivity(intent);
         }
     }

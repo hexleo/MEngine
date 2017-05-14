@@ -13,6 +13,8 @@ import com.hexleo.mengine.engine.constant.MeConstant;
 import com.hexleo.mengine.util.FileHelper;
 import com.hexleo.mengine.util.ThreadManager;
 
+import java.util.List;
+
 /**
  * 闪屏Activity 完成初始化工作才进行跳转
  */
@@ -53,7 +55,15 @@ public class SplashActivity extends BaseActivity {
                 ThreadManager.mainPost(new Runnable() {
                     @Override
                     public void run() {
-                        TabHostActivity.create(SplashActivity.this);
+                        List<MePageConfig.NavPage> navs =  MEngineConfig.getInstance().getPageConfig().getNavPages();
+                        if (navs == null) {
+                            return;
+                        }
+                        if (navs.size() == 1) {
+                            WebViewActivity.create(SplashActivity.this, navs.get(0).bundleName, false, "");
+                        } else {
+                            TabHostActivity.create(SplashActivity.this);
+                        }
                         finish();
                     }
                 });
