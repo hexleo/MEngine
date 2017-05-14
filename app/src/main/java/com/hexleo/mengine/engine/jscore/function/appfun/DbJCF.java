@@ -1,5 +1,7 @@
 package com.hexleo.mengine.engine.jscore.function.appfun;
 
+import android.text.TextUtils;
+
 import com.google.gson.Gson;
 import com.hexleo.mengine.activity.WebViewActivity;
 import com.hexleo.mengine.db.DBManager;
@@ -52,7 +54,8 @@ public class DbJCF extends JsContextFunction {
         mJsBridge.getJsContext().property(FUNC_KV_WRITE, fun);
         fun = new JSFunction(mJsBridge.getJsContext(), FUNC_KV_READ) {
             public String keyValueRead(String key) {
-                return DBManager.getInstance().get(key);
+                String value = DBManager.getInstance().get(key);
+                return TextUtils.isEmpty(value)? "" : value;
             }
         };
         mJsBridge.getJsContext().property(FUNC_KV_READ, fun);

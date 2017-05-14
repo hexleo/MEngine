@@ -35,6 +35,7 @@ public class DBManager {
         List<KeyValueDB> kv = KeyValueDB.find(KeyValueDB.class, "key=?", key);
         if (kv != null && kv.size() > 0) {
             kv.get(0).value = value;
+            kv.get(0).save();
         } else {
             KeyValueDB kvEntity = new KeyValueDB(key, value);
             kvEntity.save();

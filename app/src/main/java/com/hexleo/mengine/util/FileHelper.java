@@ -54,23 +54,15 @@ public class FileHelper {
 
 
     public static String getAssetFileContext(String filePath, Context context) {
-        StringBuilder fileContext = new StringBuilder();
+        if (context == null) {
+            return null;
+        }
         try {
-            InputStream inputStream = context.getResources().getAssets().open(filePath);
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-            BufferedReader reader = new BufferedReader(inputStreamReader);
-            String line;
-            while((line = reader.readLine()) != null){
-                fileContext.append(line);
-                fileContext.append("\n");
-            }
-            inputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            return getFileContent(context.getResources().getAssets().open(filePath));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return fileContext.toString();
+        return null;
     }
 
     public static Drawable getAssetResDrawable(String resPath, Context context) {
@@ -83,6 +75,40 @@ public class FileHelper {
             e.printStackTrace();
         }
         return drawable;
+    }
+
+    public static String getResRawFileContext(int fileResId, Context context) {
+        if (context == null) {
+            return null;
+        }
+        return getFileContent(context.getResources().openRawResource(fileResId));
+    }
+
+    private static String getFileContent(InputStream inputStream) {
+        if (inputStream == null) {
+            return null;
+        }
+        StringBuilder fileContext = new StringBuilder();
+        try {
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader reader = new BufferedReader(inputStreamReader);
+            String line;
+            while((line = reader.readLine()) != null){
+                fileContext.append(line);
+                fileContext.append("\n");
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return fileContext.toString();
     }
 
 }

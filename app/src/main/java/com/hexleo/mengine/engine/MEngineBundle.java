@@ -33,8 +33,11 @@ public class MEngineBundle {
 
     // 整个App共享全局变量
     private static Map<String, String> sGlobalVar = new Hashtable<>();
-    private static String sCommonJsFileCache;
-    private static boolean sIsCommonInited = false;
+    // 引擎通用app.js文件
+    private static volatile String sMeCommonJsFileCache;
+    // 自定义通用js文件
+    private static volatile String sCommonJsFileCache;
+    private static volatile boolean sIsCommonInited = false;
 
     private String mBundleName;
     private MeBundleConfig mConfig;
@@ -114,6 +117,8 @@ public class MEngineBundle {
         mJsContext = MeJsContextFactory.getInstance().create();
         // JsBridge加载JsContext
         mJsBridge.initJsContext(mJsContext);
+        // 加载引擎通用app.js文件
+        mJsContext.runScript(sMeCommonJsFileCache);
         // 加载common文件夹下的文件
         mJsContext.runScript(sCommonJsFileCache);
         // 加载app.js文件
@@ -121,11 +126,24 @@ public class MEngineBundle {
     }
 
     private void loadCommonAppJs() {
-        if (!sIsCommonInited) {
+        if (sIsCommonInited) {
+            return;
+        }
+        synchronized (MEngineBundle.class) {
+            if (sIsCommonInited) {
+                return;
+            }
             try {
+                StringBuilder sb = new StringBuilder();
+                // 加载引擎通用app.js文件
+                for (int id : MeConstant.ME_COMMON_RES) {
+                    sb.append(FileHelper.getResRawFileContext(id, BaseApplication.getBaseApplication()));
+                }
+                sMeCommonJsFileCache = sb.toString();
+                // 加载自定义common js文件
                 String[] files = BaseApplication.getBaseApplication().getAssets().list(MeConstant.COMMON_PATH);
                 if (files != null && files.length > 0) {
-                    StringBuilder sb = new StringBuilder();
+                    sb = new StringBuilder();
                     for (String item : files) {
                         MLog.d(TAG, "commonJs=" + item);
                         sb.append(FileHelper.getAssetFileContext(MeConstant.COMMON_PATH + File.separator + item,
@@ -133,6 +151,7 @@ public class MEngineBundle {
                     }
                     sCommonJsFileCache = sb.toString();
                 }
+
                 sIsCommonInited = true;
             } catch (IOException e) {
                 MLog.e(TAG, e.getMessage());
