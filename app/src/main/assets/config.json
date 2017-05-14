@@ -43,10 +43,11 @@
     },
     {
       "bundleName":"bundle3",
-      "path":"bundle2",
+      "path":"bundle3",
       "title":"bundle3_title",
       "lazyInit":"true",
-      "enableRefresh":"true"
+      "enableRefresh":"false",
+      "webUrl":"https://hexleo.github.io/demo_load_net_page.html"
     },
     {
       "bundleName":"bundleNav1",

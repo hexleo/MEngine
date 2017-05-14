@@ -1,5 +1,6 @@
 
 function init(param) {
+    // 此处最好要在确定页面已经执行onload后才能向index.html发送数据
     sendToWebView("page_start");
 }
 

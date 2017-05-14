@@ -57,7 +57,11 @@ public class MEngineBundle {
         mConfig = config;
         mBundleName = config.bundleName;
         mActivityRef = new WeakReference<>(null);
-        mIndexHtmlPath = FileHelper.getIndexPath(mConfig.path);
+        if (TextUtils.isEmpty(mConfig.webUrl)) {
+            mIndexHtmlPath = FileHelper.getIndexPath(mConfig.path);
+        } else {
+            mIndexHtmlPath = mConfig.webUrl;
+        }
         if (!mConfig.lazyInit) {
             initRuntime(null);
         }
@@ -114,7 +118,7 @@ public class MEngineBundle {
 
     private void initJsContext() {
         // 加载js文件
-        if (TextUtils.isEmpty(mJsFileCache)) {
+        if (!isInit) {
             mJsFileCache = FileHelper.getAppJs(mConfig.path, BaseApplication.getBaseApplication());
         }
         loadCommonAppJs();
@@ -171,9 +175,9 @@ public class MEngineBundle {
                 mWebView = MeWebViewFactory.getInstance().create(BaseApplication.getBaseApplication(), mJsBridge);
                 // 加载index.html文件  不使用loadData是防止部分机型出现乱码问题
                 MLog.d(TAG, "indexUrl=" + mIndexHtmlPath);
-                mWebView.loadUrl(mIndexHtmlPath);
                 // 文件加载完成后在加载js组件
                 mJsBridge.initWebView(mWebView);
+                mWebView.loadUrl(mIndexHtmlPath);
                 if (listener != null) {
                     listener.OnWebViewReady(mWebView);
                 }
