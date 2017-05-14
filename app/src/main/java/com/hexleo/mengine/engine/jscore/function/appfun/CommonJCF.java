@@ -3,6 +3,7 @@ package com.hexleo.mengine.engine.jscore.function.appfun;
 import com.google.gson.Gson;
 import com.hexleo.mengine.activity.WebViewActivity;
 import com.hexleo.mengine.engine.MEngineBundle;
+import com.hexleo.mengine.engine.MEngineManager;
 import com.hexleo.mengine.engine.config.json.Json;
 import com.hexleo.mengine.engine.jscore.function.JsContextFunction;
 import com.hexleo.mengine.engine.jscore.function.webviewfun.CommonJWF;
@@ -27,6 +28,8 @@ public class CommonJCF extends JsContextFunction {
     private static final String FUNC_MLOG = "MLog";
     // app.js 被启动时调用并传入参数（页面跳转时传入参数）
     private static final String FUNC_INIT = "init";
+    // app.js 页面退出时调用
+    private static final String FUNC_FINISH = "finish";
     // 全局内存变量读取与写入
     private static final String FUNC_G_VAR_WRITE = "globalVarWrite";
     private static final String FUNC_G_VAR_READ = "globalVarRead";
@@ -41,6 +44,9 @@ public class CommonJCF extends JsContextFunction {
 
     // 被调用 启动被调用
     public static final String ACTION_INIT = "init";
+    // 被调用 页面结束时调用
+    public static final String ACTION_FINISH = "finish";
+
     // 被调用 管道度
     public static final String ACTION_PIPE_READ = "pipe";
     // 被调用 回调
@@ -62,6 +68,9 @@ public class CommonJCF extends JsContextFunction {
         switch (action) {
             case ACTION_INIT:
                 actionInitApp(data);
+                break;
+            case ACTION_FINISH:
+                actionFinishApp();
                 break;
             case ACTION_PIPE_READ:
                 actionPipeRead(data);
@@ -98,6 +107,18 @@ public class CommonJCF extends JsContextFunction {
         });
     }
 
+    /**
+     * app.js 页面关闭时调用
+     */
+    public void actionFinishApp() {
+        ThreadManager.appJsPost(new Runnable() {
+            @Override
+            public void run() {
+                mJsBridge.getJsContext().runScript(genJsCall(FUNC_FINISH));
+            }
+        });
+    }
+
     private void registerMLog() {
         JSFunction fun = new JSFunction(mJsBridge.getJsContext(), FUNC_MLOG) {
             public void MLog(String data) {
@@ -126,8 +147,13 @@ public class CommonJCF extends JsContextFunction {
     private void registerJumpTo() {
         JSFunction fun = new JSFunction(mJsBridge.getJsContext(), FUNC_JUMP_TO) {
             public void jumpTo(String bundleName, String data) {
-                MLog.d(TAG, FUNC_JUMP_TO);
-                WebViewActivity.create(mJsBridge.getMeBundle().getActivity(), bundleName, data);
+                MLog.d(TAG, FUNC_JUMP_TO + " " + bundleName);
+                MEngineBundle bundle = MEngineManager.getInstance().getBundle(bundleName);
+                if (bundle != null && !bundle.isUsed()) {
+                    WebViewActivity.create(mJsBridge.getMeBundle().getActivity(), bundleName, data);
+                } else {
+                    MLog.d(TAG, FUNC_JUMP_TO + "bundle is null OR bundle is used NAME=" + bundleName);
+                }
             }
         };
         mJsBridge.getJsContext().property(FUNC_JUMP_TO, fun);

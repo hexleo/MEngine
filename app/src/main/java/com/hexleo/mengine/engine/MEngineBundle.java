@@ -11,6 +11,7 @@ import com.hexleo.mengine.engine.config.MeBundleConfig;
 import com.hexleo.mengine.engine.constant.MeConstant;
 import com.hexleo.mengine.engine.jscore.MeJsContextFactory;
 import com.hexleo.mengine.engine.jscore.MeJsContext;
+import com.hexleo.mengine.engine.jscore.function.appfun.CommonJCF;
 import com.hexleo.mengine.engine.webview.MeWebView;
 import com.hexleo.mengine.engine.webview.MeWebViewFactory;
 import com.hexleo.mengine.util.FileHelper;
@@ -44,6 +45,7 @@ public class MEngineBundle {
     private String mJsFileCache;
     private String mIndexHtmlPath;
     private boolean isInit; // bundle是否已经初始化
+    private boolean isUsed = false; // 是否正在被使用
 
     private MeJsBridge mJsBridge;
     private MeJsContext mJsContext;
@@ -69,6 +71,10 @@ public class MEngineBundle {
 
     public String getBundleName() {
         return mBundleName;
+    }
+
+    public boolean isUsed() {
+        return isUsed;
     }
 
     public MeBundleConfig getBundleConfig() {
@@ -191,6 +197,7 @@ public class MEngineBundle {
             MLog.d(TAG, "getWebView webview is ready");
             listener.OnWebViewReady(mWebView);
         }
+        isUsed = true; // 开始使用此bundle
     }
 
     public MeJsBridge getJsBridge() {
@@ -200,7 +207,11 @@ public class MEngineBundle {
     /**
      * 销毁时回调
      */
-    public void destory() {
+    public void destroy() {
+        if (mJsBridge != null) {
+            mJsBridge.callJsContext(CommonJCF.getFuncName(), CommonJCF.ACTION_FINISH, null);
+        }
+        isUsed = false; // 不再使用此bundle
     }
 
 }

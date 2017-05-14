@@ -32,6 +32,9 @@ function onRefresh() {
         MLog("error:" + data);
         finishRefresh();
     });
+}
 
+function finish() {
+    MLog("bundle2 catch finish event");
 }
 

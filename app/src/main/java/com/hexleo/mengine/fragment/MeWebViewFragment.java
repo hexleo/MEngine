@@ -116,7 +116,7 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
         super.onDetach();
         mViewContent.removeAllViews();
         if (mMeBundle != null) {
-            mMeBundle.destory();
+            mMeBundle.destroy();
         }
     }
 
