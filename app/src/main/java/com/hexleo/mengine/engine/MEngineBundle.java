@@ -57,7 +57,7 @@ public class MEngineBundle {
         mConfig = config;
         mBundleName = config.bundleName;
         mActivityRef = new WeakReference<>(null);
-        mIndexHtmlPath = FileHelper.getIndexPath(mBundleName);
+        mIndexHtmlPath = FileHelper.getIndexPath(mConfig.path);
         if (!mConfig.lazyInit) {
             initRuntime(null);
         }
@@ -110,7 +110,7 @@ public class MEngineBundle {
     private void initJsContext() {
         // 加载js文件
         if (TextUtils.isEmpty(mJsFileCache)) {
-            mJsFileCache = FileHelper.getAppJs(mBundleName, BaseApplication.getBaseApplication());
+            mJsFileCache = FileHelper.getAppJs(mConfig.path, BaseApplication.getBaseApplication());
         }
         loadCommonAppJs();
         // 创建JsContext

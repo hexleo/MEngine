@@ -31,9 +31,9 @@ param,
 successCallBack,
 errorCallBack
 ) {
-requestNative(method, url, JSON.stringify(param),
-genCallBackLink(successCallBack),
-genCallBackLink(errorCallBack));
+    requestNative(method, url, JSON.stringify(param),
+    genCallBackLink(successCallBack),
+    genCallBackLink(errorCallBack));
 }
 
 

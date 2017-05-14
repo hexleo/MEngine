@@ -6,6 +6,7 @@ package com.hexleo.mengine.engine.config.json;
 
 public class JsonBundleConfig extends Json{
     public String bundleName;
+    public String path;
     public String title;
     public String titleColor;
     public String lazyInit;
@@ -17,6 +18,7 @@ public class JsonBundleConfig extends Json{
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("bundleName=" + bundleName);
+        sb.append(",path=" + path);
         sb.append(",title=" + title);
         sb.append(",titleColor=" + titleColor);
         sb.append(",lazyInit=" + lazyInit);

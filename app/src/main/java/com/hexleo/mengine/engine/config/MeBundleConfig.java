@@ -10,7 +10,10 @@ import com.hexleo.mengine.engine.config.json.JsonBundleConfig;
  */
 
 public class MeBundleConfig {
+    // bundle名称
     public String bundleName;
+    // bundle所在资源的路径
+    public String path;
     // 标题栏名称
     public String title;
     // 标题栏颜色
@@ -30,6 +33,7 @@ public class MeBundleConfig {
 
     public void init(JsonBundleConfig bundleConfig) {
         this.bundleName = bundleConfig.bundleName;
+        this.path = bundleConfig.path;
         this.title = bundleConfig.title;
         this.titleColor = getColor(bundleConfig.titleColor, MEngineConfig.getInstance().getGlobalConfig().getTitleColor());
         this.lazyInit = getBoolean(bundleConfig.lazyInit, false);

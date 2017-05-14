@@ -29,28 +29,40 @@
   "bundleConfig":[
     {
       "bundleName":"bundle1",
+      "path":"bundle1",
       "title":"bundle1_title",
       "lazyInit":"false",
       "enableRefresh":"false"
     },
     {
       "bundleName":"bundle2",
+      "path":"bundle2",
       "title":"bundle2_title",
       "lazyInit":"false",
       "enableRefresh":"true"
     },
     {
+      "bundleName":"bundle3",
+      "path":"bundle2",
+      "title":"bundle3_title",
+      "lazyInit":"false",
+      "enableRefresh":"true"
+    },
+    {
       "bundleName":"bundleNav1",
+      "path":"bundleNav1",
       "lazyInit":"false",
       "enableRefresh":"true"
     },
     {
       "bundleName":"bundleNav2",
+      "path":"bundleNav2",
       "lazyInit":"false",
       "enableRefresh":"false"
     },
     {
       "bundleName":"bundleNav3",
+      "path":"bundleNav3",
       "lazyInit":"false",
       "enableRefresh":"false"
     }

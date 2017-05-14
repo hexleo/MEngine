@@ -26,6 +26,7 @@ function onRefresh() {
         finishRefresh();
         param = {"action":"refresh", "uiData":data};
         sendToWebView(JSON.stringify(param));
+        jumpTo("bundle3", "some params");
     },
     function(error) {
         MLog("error:" + data);
