@@ -6,16 +6,23 @@
 
 <body>
     <h1>MEngine</h1>
-    <p>文档与样例</p>
+    <p>文档与样例代码</p>
     <hr />
-    <ul>
-        <li>目录结构</li>
+    <ul class="home">
+        <li onclick="jumpTo('bundleDemoConfig')">目录结构与配置文件config.json</li>
+        <li onclick="jumpTo('bundleDemoJump')">页面跳转样例</li>
+        <li onclick="jumpTo('bundleDemoCommunicate')">Web页面与app.js相互通信</li>
+        <li onclick="jumpTo('bundleDemoHttp')">app.js发起Http请求</li>
+        <li onclick="jumpTo('bundleDemoLoadJs')">app.js加载自定义通用js</li>
+        <li onclick="jumpTo('bundleDemoHttp')">使用Native下拉刷新控件</li>
+        <li onclick="jumpTo('bundleDemoGlobalVar')">所有页面共享数据</li>
+        <li onclick="jumpTo('bundleDemoDB')">数据库读/写</li>
+        <li onclick="jumpTo('bundleDemoWebUrl')">打开外部url页面</li>
+
     </ul>
 </body>
 <script>
-    document.onclick = function(event) {
-        sendToApp("onclick");
-    }
+
 function jumpTo(target) {
     sendToApp(target);
 }

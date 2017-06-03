@@ -1,0 +1,66 @@
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+    <h2>目录结构与配置文件</h2>
+    <hr />
+    <h3>目录结构</h3>
+    <p>
+        主要文件与目录包括如下（所有文件存放在assets目录下）：<br />
+        <ul>
+            <li>config.json：全局配置文件</li>
+            <li>common：所有bundle下的app.js都会加载此目录下所有js文件</li>
+            <li>res：图片资源，配置文件中的指定的图片必须放在此目录下</li>
+            <li>bundle...：每个页面属于一个独立的bundle目录下，"..."表示bundle目录可以自定义名称，在配置文件里声明就好<br/>
+                每个bundle...目录是一个独立页面，其必须包含index.html与app.js
+                <ul>
+                    <li>index.html是当前bundle的展示页面</li>
+                    <li>app.js是当前bundle的业务逻辑运行代码，此文件里的代码都运行在异步线程，不会阻塞Web页面的渲染</li>
+                </ul>
+            </li>
+            <li>可以自由添加其它目录</li>
+        </ul>
+    </p>
+    <p>
+
+    </p>
+    <hr />
+    <h3>配置文件config.json</h3>
+    <p>
+        配置文件使用json作为组织格式，其主要配置3块内容：bundleConfig, pageConfig, globalConfig（具体配置可以参考此Demo里的config.json）<br />
+        <p>
+        bundleConfig：配置所有需要展示的页面，其主要配置项如下<br />
+        <ul>
+            <li>bundleName：bundle的名称，bundle的id声明，如此Demo的名称为bundleDemoConfig</li>
+            <li>path：bundle所在文件中，不支持二级目录定义,如此Demo的目录为bundleDemoConfig</li>
+            <li>title：bundle在比标题栏显示的标题，默认为白色文字</li>
+            <li>lazyInit：页面是否懒加载，默认为app启动就加载，如果为true，则直到页面打开才加载，当页面打开过后则不会销毁</li>
+            <li>enableRefresh：是否开启使用页面自定义刷新控件，默认为不开启</li>
+            <li>webUrl：可以加载外部页面，如果定义此项则不会加载本地index.html页面</li>
+        </ul>
+        </p>
+
+        <p>
+            pageConfig：配置闪屏页面与首页导航<br />
+        <ul>
+            <li>splash：配置闪屏页面的图标与背景颜色</li>
+            <li>nav：配置导航页面，app默认进入配置顺序里的第一个bundle页面。nav配置的页面必须先在bundleConfig中配置
+                <ul>
+                    <li>bundleName:指定关联到的bundle页面</li>
+                    <li>navIcon:底部导航栏的图标</li>
+                    <li>navName:导航名称</li>
+                </ul>
+                如果只配置一个导航页，则底部不会出现导航栏
+            </li>
+        </ul>
+        </p>
+
+        <p>
+            globalConfig：全局属性配置<br />
+            目前只能配置标题栏背景颜色与下拉控件箭头颜色
+        </p>
+    </p>
+</body>
