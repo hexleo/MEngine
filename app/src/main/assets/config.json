@@ -2,31 +2,49 @@
   "pageConfig":{
     "nav":[
       {
-        "bundleName":"bundleNav1",
-        "navIcon":"icon.png",
-        "navName":"导航一"
+        "bundleName":"bundleNavHome",
+        "navIcon":"home.png",
+        "navName":"首页"
       },
       {
-        "bundleName":"bundleNav2",
-        "navIcon":"icon.png",
-        "navName":"导航二"
+        "bundleName":"bundleNavComment",
+        "navIcon":"comment.png",
+        "navName":"消息"
       },
       {
-        "bundleName":"bundleNav3",
-        "navIcon":"icon.png",
-        "navName":"导航三"
+        "bundleName":"bundleNavSetting",
+        "navIcon":"setting.png",
+        "navName":"设置"
       }
     ],
     "splash":{
       "splashIcon":"icon.png",
-      "splashBgColor":"#0000ff"
+      "splashBgColor":"#f5f5f5"
     }
   },
   "globalConfig":{
-    "titleColor": "#00ff00",
-    "refreshColor": "#0000ff"
+    "titleColor": "#000000",
+    "refreshColor": "#000000"
   },
   "bundleConfig":[
+    {
+      "bundleName":"bundleNavHome",
+      "path":"bundleNavHome",
+      "lazyInit":"false",
+      "enableRefresh":"false"
+    },
+    {
+    "bundleName":"bundleNavComment",
+    "path":"bundleNavComment",
+    "lazyInit":"false",
+    "enableRefresh":"true"
+    },
+    {
+    "bundleName":"bundleNavSetting",
+    "path":"bundleNavSetting",
+    "lazyInit":"false",
+    "enableRefresh":"false"
+    },
     {
       "bundleName":"bundle1",
       "path":"bundle1",
@@ -48,24 +66,6 @@
       "lazyInit":"true",
       "enableRefresh":"false",
       "webUrl":"https://hexleo.github.io/demo_load_net_page.html"
-    },
-    {
-      "bundleName":"bundleNav1",
-      "path":"bundleNav1",
-      "lazyInit":"false",
-      "enableRefresh":"true"
-    },
-    {
-      "bundleName":"bundleNav2",
-      "path":"bundleNav2",
-      "lazyInit":"false",
-      "enableRefresh":"false"
-    },
-    {
-      "bundleName":"bundleNav3",
-      "path":"bundleNav3",
-      "lazyInit":"false",
-      "enableRefresh":"false"
     }
   ]
 
