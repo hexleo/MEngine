@@ -81,6 +81,13 @@
       "enableRefresh":"false"
     },
     {
+      "bundleName":"bundleDemoHttp",
+      "path":"bundleDemoHttp",
+      "title":"app.js发起Http请求",
+      "lazyInit":"false",
+      "enableRefresh":"false"
+    },
+    {
       "bundleName":"bundle1",
       "path":"bundle1",
       "title":"bundle1_title",

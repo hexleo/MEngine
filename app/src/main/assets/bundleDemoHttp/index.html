@@ -1,0 +1,32 @@
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+    <h2>app.js发起Http请求</h2>
+    <hr />
+    <p>app.js api</p>
+    <ul>
+        <li>requestGet(url,successCallBack, errorCallBack); 发起get请求</li>
+        <li>requestGet(url,param,successCallBack, errorCallBack); 发起get请求，param传入json对象，框架自动拼装url</li>
+        <li>requestPost(url,param,successCallBack, errorCallBack); 发起post请求</li>
+    </ul>
+    <div>
+        <button type="button" onclick="sendGetRequest()">发起请求</button>
+        <div id="result"></div>
+    </div>
+</body>
+<script>
+// 封装一个跳转方法
+function sendGetRequest() {
+    // 向app.js发送消息
+    sendToApp("");
+}
+
+function receiveFromApp(data) {
+    document.getElementById("result").innerHTML = decodeURIComponent(data);
+}
+
+</script>
