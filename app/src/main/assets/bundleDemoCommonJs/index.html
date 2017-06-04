@@ -1,0 +1,28 @@
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+    <h1>app.js加载自定义通用js</h1>
+    <p>
+        通用js都写在common文件夹下，不能创建子目录，所有通过js都会被所有bundle给加载
+    </p>
+    <ul>
+        <li>定义在common文件夹下的所有js文件都会与app.js合并</li>
+        <li>其变量只有bundle内部可用，不同bundle间不能通过common.js进行共享</li>
+        <li>实质创建bundle时，其只在对应bundle运行时中运行</li>
+    </ul>
+    <hr />
+    <p>Demo common.js中定义了方法commonFunction，启动页面时其会向当前bundle的index.html发送一条消息</p>
+    <div id="result">
+    </div>
+</body>
+<script>
+
+function receiveFromApp(data){
+    resultElem = document.getElementById("result");
+    resultElem.innerHTML += data + " " + (new Date().toLocaleString( )) + "<br />";
+}
+</script>

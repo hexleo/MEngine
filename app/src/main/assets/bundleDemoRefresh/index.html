@@ -1,0 +1,29 @@
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+    <h2>使用Native下拉刷新控件</h2>
+    <hr />
+    <p>如果需要页面使用下拉刷新控件，需要在config.json 配置bundle的属性"enableRefresh":"true"</p>
+    <p>app.js api</p>
+    <ul>
+        <li>在app.js中监听function onRefresh(){} 方法开始刷新</li>
+        <li>调用finishRefresh();结束下拉刷新</li>
+    </ul>
+    <br />
+    <div>
+        <p>Demo 下拉刷新后请求网络数据，数据回来后结束下拉刷新</p>
+        <div id="result"></div>
+    </div>
+</body>
+<script>
+
+function receiveFromApp(data) {
+    resultElem = document.getElementById("result");
+    resultElem.innerHTML += decodeURIComponent(data) + "<br />";
+}
+
+</script>

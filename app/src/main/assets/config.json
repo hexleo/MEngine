@@ -67,6 +67,13 @@
       "enableRefresh":"false"
     },
     {
+      "bundleName":"bundleDemoLife",
+      "path":"bundleDemoLife",
+      "title":"bundle生命周期回调",
+      "lazyInit":"false",
+      "enableRefresh":"false"
+    },
+    {
       "bundleName":"bundleDemoJump",
       "path":"bundleDemoJump",
       "title":"页面跳转",
@@ -88,26 +95,39 @@
       "enableRefresh":"false"
     },
     {
-      "bundleName":"bundle1",
-      "path":"bundle1",
-      "title":"bundle1_title",
+      "bundleName":"bundleDemoRefresh",
+      "path":"bundleDemoRefresh",
+      "title":"使用Native下拉刷新控件",
+      "lazyInit":"false",
+      "enableRefresh":"true"
+    },
+    {
+      "bundleName":"bundleDemoCommonJs",
+      "path":"bundleDemoCommonJs",
+      "title":"app.js通用js",
       "lazyInit":"false",
       "enableRefresh":"false"
     },
     {
-      "bundleName":"bundle2",
-      "path":"bundle2",
-      "title":"bundle2_title",
-      "lazyInit":"true",
-      "enableRefresh":"true"
+      "bundleName":"bundleDemoGlobalVar",
+      "path":"bundleDemoGlobalVar",
+      "title":"共享数据",
+      "lazyInit":"false",
+      "enableRefresh":"false"
     },
     {
-      "bundleName":"bundle3",
-      "path":"bundle3",
-      "title":"bundle3_title",
+      "bundleName":"bundleDemoDB",
+      "path":"bundleDemoDB",
+      "title":"数据库读/写",
+      "lazyInit":"false",
+      "enableRefresh":"false"
+    },
+    {
+      "bundleName":"bundleDemoWebUrl",
+      "title":"加载外部web页面",
       "lazyInit":"true",
       "enableRefresh":"false",
-      "webUrl":"https://hexleo.github.io/demo_load_net_page.html"
+      "webUrl":"https://hexleo.github.io/mengine/demo_load_net_page.html"
     }
   ]
 }

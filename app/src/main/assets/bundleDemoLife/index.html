@@ -1,0 +1,26 @@
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+    <h1>生命周期通知</h1>
+    <p>所有生命周期调用都在app.js监听</p>
+    <ul>
+        <li>页面打开会调用init方法，其接收jumpTo传递的字符串参数param</li>
+        <li>页面关闭会调用finish方法</li>
+        <li>生命周期方法非必须监听</li>
+    </ul>
+    <hr />
+    <p>Demo 重复打开此页面可以看到回调，页面返回(关闭页面)后WebView并不会被销毁，再次打开时会遗留有上次的数据，所以需要在finish（页面关闭回调）中做些清理操作，此Demo并没有做清空处理，所以可以看到所有回调过程</p>
+    <div id="result">
+    </div>
+</body>
+<script>
+
+function receiveFromApp(data){
+    resultElem = document.getElementById("result");
+    resultElem.innerHTML += data + " " + (new Date().toLocaleString( )) + "<br />";
+}
+</script>

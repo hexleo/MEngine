@@ -56,7 +56,7 @@
 function clickBtn() {
     inputMsg = document.getElementById("inputMsg").value;
     num = document.getElementById("number").value;
-    message = JSON.stringify({"inputMsg": inputMsg, "number" : num})
+    message = JSON.stringify({"inputMsg": inputMsg, "number" : num});
     MLog("bundleDemoCommunication index.html send message=" + message);
     // 向app.js发送消息
     sendToApp(message);

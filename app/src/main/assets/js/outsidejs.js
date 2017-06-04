@@ -1,6 +1,0 @@
-
-
-function callOutsideJs() {
-    MLog("callOutsideJs");
-}
-

@@ -1,0 +1,53 @@
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+    <h2>数据库读写</h2>
+    <hr />
+    <p>1）所有bundle都可以共享；2）存储格式使用key value键值对的方式进行存储，都必须是字符串；3）应用没有卸载则一直存在</p>
+    <p>app.js api</p>
+    <ul>
+        <li>写入DB keyValueWrite(key , value);</li>
+        <li>读取DB keyValueRead(key)，返回值就是value，如果没有则返回空</li>
+    </ul>
+    <hr />
+    <div>
+        <p>
+            key:<br /><input id="wKey" value="key1" /><br />
+            value:<br /><input id="value" value="value1" /><br />
+            <button type="button" onclick="writeTo()">写入DB</button>
+        </p>
+        <p>
+            key:<br /><input id="rKey" value="key1" /><br />
+            <button type="button" onclick="readFrom()">读取DB</button>
+            <div id="result"></div>
+        </p>
+    </div>
+</body>
+<script src="../js/common.js" type="text/javascript"></script>
+<script>
+
+function writeTo() {
+    wk = document.getElementById("wKey").value;
+    wv = document.getElementById("value").value;
+    // 发送消息写入变量
+    sendToApp(jsonToString({"action":"w", "key" : wk, "value":wv}));
+}
+
+function readFrom() {
+    rk = document.getElementById("rKey").value;
+    // 发送消息读取变量，在receiveFromApp中接收
+    sendToApp(jsonToString({"action":"r", "key" : rk}));
+}
+
+function receiveFromApp(data) {
+    json = stringToJson(data);
+    if (json["action"] == "r") {
+        document.getElementById("result").innerHTML = "value=" + json["value"];
+    }
+}
+
+</script>

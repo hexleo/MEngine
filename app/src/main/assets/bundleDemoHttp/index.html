@@ -26,7 +26,8 @@ function sendGetRequest() {
 }
 
 function receiveFromApp(data) {
-    document.getElementById("result").innerHTML = decodeURIComponent(data);
+    resultElem = document.getElementById("result");
+    resultElem.innerHTML += decodeURIComponent(data) + "<br />";;
 }
 
 </script>
