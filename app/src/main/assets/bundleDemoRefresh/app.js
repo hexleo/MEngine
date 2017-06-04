@@ -1,5 +1,5 @@
 
-// 接收页面的事件通知
+// 接收页面的刷新
 function onRefresh() {
     // 发起get的请求
     requestGet("https://hexleo.github.io/mengine/demo_http_request.html",
