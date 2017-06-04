@@ -34,7 +34,7 @@ public abstract class JsFunction {
         initFun();
     }
 
-    public String genJsCall(String funcName, String... params) {
+    public String  genJsCall(String funcName, String... params) {
         List<String> list = null;
         if (params != null && params.length > 0) {
             list = new ArrayList<>();

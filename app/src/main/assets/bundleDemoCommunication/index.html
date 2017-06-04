@@ -1,0 +1,74 @@
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+    <h2>Web页面与app.js相互通信</h2>
+    <p>
+        app.js运行在工作线程，不会阻塞Web页面的渲染，这是本框架的一大特点。在使用时，index.html不需要显示声明对app.js的引用，框架自动完成。
+    </p>
+    <p>
+        Web页面只负责UI渲染，app.js只负责业务逻辑，所以他们之间的通信尤为重要
+    </p>
+    <hr />
+    <p>
+        index.html api
+        <ul>
+            <li>消息发送：调用sendToApp(message) 向当前bundle的app.js发送一条消息，</li>
+            <li>消息接收：需要自己显示声明function receiveFromApp(data){...}，此方法异步监听app.js发送来的消息</li>
+        </ul>
+    </p>
+
+    <p>
+        app.js api
+    <ul>
+        <li>消息发送：调用sendToWebView(message) 向当前bundle的index.html发送一条消息，消息结构是字符串，如果想传递更多参数请使用json先封装成字符串再发送</li>
+        <li>消息接收：需要自己显示声明function receiveFromWebView(data){...}，此方法异步监听index.html发送来的消息</li>
+    </ul>
+    </p>
+    <p>注意：1）消息结构message是字符串，如果想传递更多参数请使用json先封装成字符串再发送；2）消息接收参数data是字符串类型，如果传递的是json请先解封装为json类型</p>
+    <p></p>
+    <hr />
+    <h3>Demo</h3>
+    <p>
+        点击发送按钮后向app.js发送一段字符串，app.js处理完后，向index.html发送处理结果，index.html展示处理结果。
+    </p>
+    <p>
+        因为app.js是在工作线程中运行，所以可以在app.js做一些耗时操作，其并不会阻塞Web页面的渲染，此Demo会在app.js处理时故意执行一个斐波那契数列的递归运算，在结果没返回前可以尝试滚动页面，你会发现页面并不会被阻塞
+    </p>
+    <div>
+        <input id="inputMsg" value="default_string"/>
+        <input id="number" value="40" type="number"/>
+        <button type="button" onclick="clickBtn()">发送</button>
+    </div>
+    <div>
+        <p>处理结果：</p>
+        <div id="result"></div>
+    </div>
+    <div>
+        <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+        此处为底部
+    </div>
+</body>
+<script>
+function clickBtn() {
+    inputMsg = document.getElementById("inputMsg").value;
+    num = document.getElementById("number").value;
+    message = JSON.stringify({"inputMsg": inputMsg, "number" : num})
+    MLog("bundleDemoCommunication index.html send message=" + message);
+    // 向app.js发送消息
+    sendToApp(message);
+}
+
+// 接收来自app.js的消息
+function receiveFromApp(data){
+    // 会在logcat中打印出日志
+    MLog("bundleDemoCommunication index.html recv data=" + data);
+    // 解析json格式
+    param = JSON.parse(decodeURIComponent(data));
+    document.getElementById("result").innerHTML = param["html"] + " Fibonacci(" + param["number"] + ")=" + param["result"];
+}
+
+</script>

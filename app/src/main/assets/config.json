@@ -60,6 +60,13 @@
       "enableRefresh":"false"
     },
     {
+      "bundleName":"bundleDemoCommunication",
+      "path":"bundleDemoCommunication",
+      "title":"WebView与app.js通信",
+      "lazyInit":"false",
+      "enableRefresh":"false"
+    },
+    {
       "bundleName":"bundle1",
       "path":"bundle1",
       "title":"bundle1_title",
