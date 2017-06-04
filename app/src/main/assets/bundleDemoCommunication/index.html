@@ -66,7 +66,7 @@ function clickBtn() {
 function receiveFromApp(data){
     // 会在logcat中打印出日志
     MLog("bundleDemoCommunication index.html recv data=" + data);
-    // 解析json格式
+    // 解析json格式(处理传递特殊符号问题，需要使用decode方法，此处转换可以进行封装)
     param = JSON.parse(decodeURIComponent(data));
     document.getElementById("result").innerHTML = param["html"] + " Fibonacci(" + param["number"] + ")=" + param["result"];
 }

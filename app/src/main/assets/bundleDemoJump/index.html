@@ -1,0 +1,35 @@
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+    <h2>页面跳转</h2>
+    <p>为了简化index.html的逻辑，所有业务逻辑都放在app.js中实现，包括跳转，所有需要由index.html页面发送跳转消息由app.js执行跳转</p>
+    <hr />
+    <p>跳转方法为jumpTo(bundleName, message); bundleName是config.json中定义的名称，message是字符串，被跳转的页面会先回调app.js页面的init(param)方法，如果要传递json对线请参考“Web页面与app.js相互通信”</p>
+    <p>注意事项</p>
+    <ul>
+        <li>不需要处理返回事件，标题栏中自动包含返回按钮</li>
+        <li>jumpTo暂不支持直接导航到已打开页面功能（例如已经打开 A B C页面，C页面在栈顶，C不能调用jumpTo去到 A B C任何一个页面）</li>
+        <li>jumpTo暂不支持多个页面多次跳转（例如当前页面是A，A不能再跳转A。有这样一种场景：页面结构不变，只是内容变化，框架提供两个解决方案 1）自己刷新当前页面；2）在config.json中再定义bundle，名称不一样，但bundle文件路径相同（与本例相同））</li>
+    </ul>
+    <div>
+        <p>样例<button type="button" onclick="jumpTo('bundleDemoJump2')">点击跳转</button></p>
+    </div>
+</body>
+<script>
+// 封装一个跳转方法
+function jumpTo(target) {
+    // 向app.js发送跳转消息
+    sendToApp(target);
+}
+
+function receiveFromApp(data) {
+    if (data != "") {
+        document.body.innerHTML = "跳转后的页面 接收到的参数=" + data;
+    }
+}
+
+</script>

@@ -67,6 +67,20 @@
       "enableRefresh":"false"
     },
     {
+      "bundleName":"bundleDemoJump",
+      "path":"bundleDemoJump",
+      "title":"页面跳转",
+      "lazyInit":"false",
+      "enableRefresh":"false"
+    },
+    {
+      "bundleName":"bundleDemoJump2",
+      "path":"bundleDemoJump",
+      "title":"已经跳转到新的页面",
+      "lazyInit":"false",
+      "enableRefresh":"false"
+    },
+    {
       "bundleName":"bundle1",
       "path":"bundle1",
       "title":"bundle1_title",

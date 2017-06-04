@@ -19,6 +19,7 @@
         <TabWidget
             android:id="@android:id/tabs"
             android:layout_width="match_parent"
+            android:showDividers="none"
             android:layout_height="50dp"
             android:layout_gravity="bottom"/>
     </FrameLayout>
