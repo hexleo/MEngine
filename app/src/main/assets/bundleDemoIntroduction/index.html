@@ -1,0 +1,34 @@
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+</head>
+
+<body>
+    <h2>项目介绍与实现原理</h2>
+    <p>
+        MEngine 定位使用Web技术写Native应用，典型的Hybrid应用框架。实现目标：更接近Native应用体验。为此做了一些新的尝试，突出在M（Multi） Engine 多引擎上，通过多页面同时加载与业务逻辑线程分离，加快WebView的渲染，让应用感觉更接近Native体验。
+    </p>
+    <hr />
+    <p>
+        先给个简单总结，多引擎加快页面渲染的技术特点
+    <ul>
+        <li>UI与业务线程分离</li>
+        <li>多WebView且同时加载</li>
+    </ul>
+    </p>
+    <h3>项目特点</h3>
+    <ul>
+        <li>Hybrid应用</li>
+        <li>每个bundle都是独立页面，拒绝使用单页面应用（现在的手机内存相对较大可以不用再局限于单页面的应用）</li>
+        <li>每个bundle分为index.html显示页面，于app.js业务逻辑处理js。
+            <ul>
+                <li>index.html只负责Web页面的渲染与消息传递，并不负责业务逻辑处理，其工作在UI线程（index.html里js的运行会阻塞UI渲染）</li>
+                <li>app.js只处理业务逻辑，不能直接进行UI交互，其Runtime不包含document等页面渲染使用的类（app.js运行与工作线程，不会阻塞UI线程渲染）</li>
+                <li>通过将渲染与业务逻辑线程的分离，尽可能的提高渲染效率</li>
+            </ul>
+        </li>
+        <li>所有WebView默认在应用启动时创建，打开新页面时不用等待页面加载，加快页面打开速度。如果为内存考虑，可以设置延迟加载（lazyInit），如果设置延迟加载则会在打开时再加载页面，一旦页面加载完成则不会释放</li>
+    </ul>
+
+</body>

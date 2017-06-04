@@ -46,6 +46,13 @@
     "enableRefresh":"false"
     },
     {
+      "bundleName":"bundleDemoIntroduction",
+      "path":"bundleDemoIntroduction",
+      "title":"项目介绍",
+      "lazyInit":"false",
+      "enableRefresh":"false"
+    },
+    {
       "bundleName":"bundleDemoConfig",
       "path":"bundleDemoConfig",
       "title":"目录与配置",
