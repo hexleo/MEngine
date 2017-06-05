@@ -68,4 +68,12 @@ public class ThreadManager {
         sInstance.mMainHandler.post(runnable);
     }
 
+    /**
+     * 抛到主线程延迟执行
+     * @param runnable
+     */
+    public static void mainPostDelay(Runnable runnable, long delay) {
+        sInstance.mMainHandler.postDelayed(runnable, delay);
+    }
+
 }

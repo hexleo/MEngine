@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
     private static final String TAG = "MeWebViewFragment";
 
     private boolean enableRefresh;
+    private boolean isPageFromWebSite; // 是否为外部页面
     private String mInitParam; // 初始化时传入的参数
     private View mRootView;
     private MeWebView mWebView;
@@ -113,18 +115,21 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
         mViewContent = (ViewGroup) view.findViewById(R.id.content);
         mRefreshLayout = (MeRefreshView) view.findViewById(R.id.refresh_layout);
         enableRefresh = mMeBundle.getBundleConfig().enableRefresh;
-        mRefreshLayout.setEnabled(enableRefresh);
+        isPageFromWebSite = !TextUtils.isEmpty(mMeBundle.getBundleConfig().webUrl);
+        mRefreshLayout.setEnabled(enableRefresh || isPageFromWebSite);
         mRefreshLayout.setOnRefreshListener(this);
         mRefreshLayout.setColorSchemeColors(mMeBundle.getBundleConfig().refreshColor);
         MEngine.getInstance().getWebView(mMeBundle.getBundleName(), this);
     }
-
 
     @Override
     public void onDetach() {
         super.onDetach();
         if (mMeBundle != null) {
             mMeBundle.destroy();
+        }
+        if (enableRefresh) {
+            mRefreshLayout.setRefreshing(false);
         }
     }
 
@@ -150,7 +155,26 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
 
     @Override
     public void onRefresh() {
-        mMeBundle.getJsBridge().callJsContext(RefreshJCF.getFuncName(), RefreshJCF.ACTION_ON_REFRESH, null);
+        if (isPageFromWebSite) {
+            final MeWebView webView = mMeBundle.getWebView();
+            if (webView != null) {
+                ThreadManager.mainPost(new Runnable() {
+                    @Override
+                    public void run() {
+                        webView.loadUrl(mMeBundle.getBundleConfig().webUrl);
+                        // 假等待关闭
+                        ThreadManager.postDelay(new Runnable() {
+                            @Override
+                            public void run() {
+                                mRefreshLayout.setRefreshing(false);
+                            }
+                        }, 2000);
+                    }
+                });
+            }
+        } else {
+            mMeBundle.getJsBridge().callJsContext(RefreshJCF.getFuncName(), RefreshJCF.ACTION_ON_REFRESH, null);
+        }
     }
 
     @Override
