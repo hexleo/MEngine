@@ -14,6 +14,7 @@ import com.hexleo.mengine.engine.jscore.MeJsContext;
 import com.hexleo.mengine.engine.jscore.function.appfun.CommonJCF;
 import com.hexleo.mengine.engine.webview.MeWebView;
 import com.hexleo.mengine.engine.webview.MeWebViewFactory;
+import com.hexleo.mengine.fragment.MeWebViewFragment;
 import com.hexleo.mengine.util.FileHelper;
 import com.hexleo.mengine.util.MLog;
 import com.hexleo.mengine.util.ThreadManager;
@@ -50,6 +51,7 @@ public class MEngineBundle {
     private MeJsBridge mJsBridge;
     private MeJsContext mJsContext;
     private MeWebView mWebView;
+    private MeWebViewFragment mFragment;
     private WeakReference<BaseActivity> mActivityRef;
 
     private MEngineBundle(MeBundleConfig config) {
@@ -73,6 +75,10 @@ public class MEngineBundle {
 
     public String getBundleName() {
         return mBundleName;
+    }
+
+    public void startUsing() {
+        isUsed = true;
     }
 
     public boolean isUsed() {
@@ -100,6 +106,18 @@ public class MEngineBundle {
 
     public BaseActivity getActivity() {
         return mActivityRef.get();
+    }
+
+    public MeWebView getWebView() {
+        return mWebView;
+    }
+
+    public MeWebViewFragment getFragment() {
+        if (mFragment == null) {
+            mFragment = new MeWebViewFragment();
+            mFragment.setMeBundle(this);
+        }
+        return mFragment;
     }
 
     private void initRuntime(MeWebView.MeWebViewListener listener) {
@@ -201,7 +219,6 @@ public class MEngineBundle {
             MLog.d(TAG, "getWebView webview is ready");
             listener.OnWebViewReady(mWebView);
         }
-        isUsed = true; // 开始使用此bundle
     }
 
     public MeJsBridge getJsBridge() {

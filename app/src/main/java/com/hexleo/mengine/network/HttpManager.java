@@ -59,7 +59,7 @@ public class HttpManager {
         Response.ErrorListener error = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                listener.onError(error.networkResponse.statusCode);
+                listener.onError(error.networkResponse != null ? error.networkResponse.statusCode : 0);
             }
         };
 

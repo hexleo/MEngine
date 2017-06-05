@@ -35,6 +35,8 @@ public class MeWebViewFactory {
     public MeWebView create(Context context, MeJsBridge jsBridge) {
         MeWebView meWebView = new MeWebView(context);
         meWebView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        meWebView.setVerticalScrollBarEnabled(false);
+        meWebView.setHorizontalScrollBarEnabled(false);
         initWebViewSetting(meWebView);
         initWebViewClient(meWebView);
         initWebChromeClient(meWebView, jsBridge);

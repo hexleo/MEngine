@@ -21,6 +21,7 @@ import com.hexleo.mengine.engine.jscore.function.appfun.CommonJCF;
 import com.hexleo.mengine.engine.jscore.function.appfun.RefreshJCF;
 import com.hexleo.mengine.engine.webview.MeWebView;
 import com.hexleo.mengine.util.MLog;
+import com.hexleo.mengine.util.ThreadManager;
 import com.hexleo.mengine.view.MeRefreshView;
 import com.hexleo.mengine.widget.NavBarView;
 
@@ -41,11 +42,9 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
     private MeRefreshView mRefreshLayout;
     private NavBarView mNavBarView;
     private boolean isNeedNavBar;
-    private Handler mHandler;
 
     public MeWebViewFragment() {
         mInitParam = "";
-        mHandler = new Handler(Looper.getMainLooper());
         // 防止转屏后fragment重新创建, onDestroy需要被onDetach取代
         setRetainInstance(true);
     }
@@ -61,16 +60,21 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        initData();
+        if (mMeBundle != null) {
+            mMeBundle.startUsing();
+        }
         if (savedInstanceState == null && mRootView == null) {
-            initData();
             mRootView = inflater.inflate(R.layout.fragment_webview, container, false);
             initView(mRootView);
+        } else if (mRootView != null && mMeBundle != null) {
+            // 已经初始化过，只需要重设参数即可
+            mMeBundle.getJsBridge().callJsContext(CommonJCF.getFuncName(), CommonJCF.ACTION_INIT, mInitParam);
         }
         return mRootView;
     }
@@ -81,10 +85,15 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
         String param = bundle.getString(MeConstant.INTENT_PARAM_DATA);
         param = param == null ? "" : param;
         isNeedNavBar = bundle.getBoolean(MeConstant.INTENT_PARAM_NEED_NAVBAR, true);
-        MEngineBundle meBundle = MEngine.getInstance().getBundle(bundleName);
-        meBundle.setActivity((BaseActivity) getActivity());
-        setMeBundle(meBundle);
         setInitParam(param);
+        if (mMeBundle != null) {
+            mMeBundle.setActivity((BaseActivity) getActivity());
+        } else { // 兼容TabHost创建方式
+            setMeBundle(MEngine.getInstance().getBundle(bundleName));
+        }
+        if (mMeBundle != null) {
+            mMeBundle.setActivity((BaseActivity) getActivity());
+        }
         MLog.d(TAG, "bundleName=" + bundleName);
     }
 
@@ -114,7 +123,6 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
     @Override
     public void onDetach() {
         super.onDetach();
-        mViewContent.removeAllViews();
         if (mMeBundle != null) {
             mMeBundle.destroy();
         }
@@ -125,10 +133,12 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
         mWebView = meWebView;
         mWebView.setListener(this);
         mMeBundle.getJsBridge().callJsContext(CommonJCF.getFuncName(), CommonJCF.ACTION_INIT, mInitParam);
-        mHandler.post(new Runnable() {
+        ThreadManager.mainPost(new Runnable() {
             @Override
             public void run() {
-                mViewContent.addView(mWebView);
+                if (mViewContent.getChildCount() == 0) {
+                    mViewContent.addView(mWebView);
+                }
             }
         });
     }

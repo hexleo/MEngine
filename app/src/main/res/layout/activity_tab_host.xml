@@ -15,12 +15,13 @@
         <FrameLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/nav_tab_host_height"/>
         <TabWidget
             android:id="@android:id/tabs"
             android:layout_width="match_parent"
             android:showDividers="none"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/nav_tab_host_height"
             android:layout_gravity="bottom"/>
     </FrameLayout>
 

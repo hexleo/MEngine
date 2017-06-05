@@ -36,9 +36,13 @@ public class WebViewActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
         if (savedInstanceState == null) {
-            MeWebViewFragment fragment = new MeWebViewFragment();
-            fragment.setArguments(getIntent().getExtras());
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, fragment).commit();
+            String bundleName = getIntent().getStringExtra(MeConstant.INTENT_PARAM_BUNDLE);
+            MEngineBundle meBundle = MEngine.getInstance().getBundle(bundleName);
+            if (meBundle != null) {
+                MeWebViewFragment fragment = meBundle.getFragment();
+                fragment.setArguments(getIntent().getExtras());
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment, fragment).commit();
+            }
         }
     }
 
