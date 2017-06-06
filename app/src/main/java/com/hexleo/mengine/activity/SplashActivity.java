@@ -73,7 +73,7 @@ public class SplashActivity extends BaseActivity {
                         }
                         preInitWebView.invalidate();
                         // 通过发送消息的方式为WebView初始化展示预留时间
-                        ThreadManager.mainPost(new Runnable() {
+                        ThreadManager.mainPostDelay(new Runnable() {
                             @Override
                             public void run() {
                                 preInitWebView.removeAllViews();
@@ -84,7 +84,7 @@ public class SplashActivity extends BaseActivity {
                                 }
                                 finish();
                             }
-                        });
+                        }, 1000); // 留 1s 的缓冲绘制时间
                     }
                 });
             }
