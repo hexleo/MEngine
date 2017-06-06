@@ -30,15 +30,14 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (MEngine.getInstance().isInited()) {
-            TabHostActivity.create(SplashActivity.this);
-            finish();
-            return;
-        }
         setContentView(R.layout.activity_splash);
         root = findViewById(R.id.root);
         icon = (ImageView) findViewById(R.id.icon);
         preInitWebView = (FrameLayout) findViewById(R.id.splash_content);
+        if (MEngine.getInstance().isInited()) {
+            startApp();
+            return;
+        }
         // 初始化逻辑应该转移到Application中，这里只是暂时的
         MEngine.initialize(new MEngine.InitCallBack() {
             @Override
@@ -60,34 +59,40 @@ public class SplashActivity extends BaseActivity {
                 ThreadManager.mainPost(new Runnable() {
                     @Override
                     public void run() {
-                        final List<MePageConfig.NavPage> navs =  MEngineConfig.getInstance().getPageConfig().getNavPages();
-                        if (navs == null) {
-                            return;
-                        }
-                        List<MeBundleConfig> listBundle = MEngineConfig.getInstance().getBundleConfigs();
-                        for (MeBundleConfig config : listBundle) {
-                            MEngineBundle meBundle = MEngine.getInstance().getBundle(config.bundleName);
-                            if (meBundle != null && !config.lazyInit) {
-                                preInitWebView.addView(meBundle.getWebView());
-                            }
-                        }
-                        preInitWebView.invalidate();
-                        // 通过发送消息的方式为WebView初始化展示预留时间
-                        ThreadManager.mainPostDelay(new Runnable() {
-                            @Override
-                            public void run() {
-                                preInitWebView.removeAllViews();
-                                if (navs.size() == 1) {
-                                    WebViewActivity.create(SplashActivity.this, navs.get(0).bundleName, false, "");
-                                } else {
-                                    TabHostActivity.create(SplashActivity.this);
-                                }
-                                finish();
-                            }
-                        }, 1000); // 留 1s 的缓冲绘制时间
+                        startApp();
                     }
                 });
             }
         });
+    }
+
+    private void startApp() {
+        final List<MePageConfig.NavPage> navs =  MEngineConfig.getInstance().getPageConfig().getNavPages();
+        if (navs == null) {
+            return;
+        }
+        List<MeBundleConfig> listBundle = MEngineConfig.getInstance().getBundleConfigs();
+        for (MeBundleConfig config : listBundle) {
+            MEngineBundle meBundle = MEngine.getInstance().getBundle(config.bundleName);
+            if (meBundle != null && !config.lazyInit
+                    && meBundle.getWebView() != null
+                    && meBundle.getWebView().getParent() == null) {
+                preInitWebView.addView(meBundle.getWebView());
+            }
+        }
+        preInitWebView.invalidate();
+        // 通过发送消息的方式为WebView初始化展示预留时间
+        ThreadManager.mainPostDelay(new Runnable() {
+            @Override
+            public void run() {
+                preInitWebView.removeAllViews();
+                if (navs.size() == 1) {
+                    WebViewActivity.create(SplashActivity.this, navs.get(0).bundleName, false, "");
+                } else {
+                    TabHostActivity.create(SplashActivity.this);
+                }
+                finish();
+            }
+        }, 1000); // 留 1s 的缓冲绘制时间
     }
 }

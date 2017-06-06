@@ -2,8 +2,6 @@ package com.hexleo.mengine.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
@@ -13,10 +11,8 @@ import android.view.ViewGroup;
 
 import com.hexleo.mengine.R;
 import com.hexleo.mengine.activity.BaseActivity;
-import com.hexleo.mengine.activity.WebViewActivity;
 import com.hexleo.mengine.engine.MEngine;
 import com.hexleo.mengine.engine.MEngineBundle;
-import com.hexleo.mengine.engine.config.MEngineConfig;
 import com.hexleo.mengine.engine.constant.MeConstant;
 import com.hexleo.mengine.engine.jscore.function.appfun.CommonJCF;
 import com.hexleo.mengine.engine.jscore.function.appfun.RefreshJCF;
@@ -44,6 +40,7 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
     private MeRefreshView mRefreshLayout;
     private NavBarView mNavBarView;
     private boolean isNeedNavBar;
+    private boolean isTabHostPage;
 
     public MeWebViewFragment() {
         mInitParam = "";
@@ -87,6 +84,7 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
         String param = bundle.getString(MeConstant.INTENT_PARAM_DATA);
         param = param == null ? "" : param;
         isNeedNavBar = bundle.getBoolean(MeConstant.INTENT_PARAM_NEED_NAVBAR, true);
+        isTabHostPage = bundle.getBoolean(MeConstant.INTENT_PARAM_TABHOST_PAGE, false);
         setInitParam(param);
         if (mMeBundle != null) {
             mMeBundle.setActivity((BaseActivity) getActivity());
@@ -130,6 +128,9 @@ public class MeWebViewFragment extends BaseFragment implements MeWebView.MeWebVi
         }
         if (enableRefresh) {
             mRefreshLayout.setRefreshing(false);
+        }
+        if (isTabHostPage) {
+            mViewContent.removeAllViews();
         }
     }
 

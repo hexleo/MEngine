@@ -22,4 +22,5 @@ public class MeConstant {
     public static final String INTENT_PARAM_BUNDLE = "param_bundle"; // 需要调整的bundleName
     public static final String INTENT_PARAM_DATA = "param_data"; // 跳转后为页面传递的数据
     public static final String INTENT_PARAM_NEED_NAVBAR = "nav_bar"; // 是否需要导航栏
+    public static final String INTENT_PARAM_TABHOST_PAGE = "tabhost_page"; // 是否为tabhost导航页
 }

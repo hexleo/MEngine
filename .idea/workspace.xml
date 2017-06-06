@@ -7,7 +7,7 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4ce3dcc-cc13-42d1-a618-896b486ffb05" name="Default" comment="">
@@ -15,9 +15,16 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/SplashActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/SplashActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/TabHostActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/TabHostActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/WebViewActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/WebViewActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/constant/MeConstant.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/constant/MeConstant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java" />
     </list>
     <ignored path="MEngine.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,14 +57,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MeWebViewFragment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MeWebViewFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="169" column="29" selection-start-line="169" selection-start-column="29" selection-end-line="169" selection-end-column="29" />
+            <state relative-caret-position="249">
+              <caret line="132" column="42" selection-start-line="132" selection-start-column="42" selection-end-line="132" selection-end-column="42" />
               <folding>
-                <element signature="e#5977#6204#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#3779#3935#0" expanded="true" />
+                <element signature="e#3934#3935#0" expanded="true" />
+                <element signature="e#5212#5433#0" expanded="true" />
+                <element signature="e#5432#5433#0" expanded="true" />
+                <element signature="e#6022#6249#0" expanded="true" />
+                <element signature="e#6248#6249#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MeConstant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/constant/MeConstant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="24" column="67" selection-start-line="24" selection-start-column="67" selection-end-line="24" selection-end-column="67" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -75,17 +98,29 @@
       <file leaf-file-name="SplashActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/SplashActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="89" column="13" selection-start-line="89" selection-start-column="13" selection-end-line="89" selection-end-column="13" />
+            <state relative-caret-position="220">
+              <caret line="78" column="64" selection-start-line="78" selection-start-column="64" selection-end-line="78" selection-end-column="64" />
               <folding>
-                <element signature="e#3164#3757#0" expanded="true" />
-                <element signature="e#3756#3757#0" expanded="true" />
+                <element signature="e#2148#2310#0" expanded="true" />
+                <element signature="e#2309#2310#0" expanded="true" />
+                <element signature="e#3144#3561#0" expanded="true" />
+                <element signature="e#3560#3561#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MEngineConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/config/MEngineConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="249">
+              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="308">
@@ -98,44 +133,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThreadManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/util/ThreadManager.java">
+      <file leaf-file-name="TabHostActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/TabHostActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1311">
-              <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
-              <folding>
-                <element signature="e#1795#1796#0" expanded="true" />
-                <element signature="e#1848#1849#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MeWebViewClient.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/webview/MeWebViewClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="33" column="45" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
+            <state relative-caret-position="353">
+              <caret line="57" column="72" selection-start-line="57" selection-start-column="72" selection-end-line="57" selection-end-column="72" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MEngineManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/MEngineManager.java">
+      <file leaf-file-name="WebViewActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/WebViewActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1729">
-              <caret line="102" column="16" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SwipeRefreshLayout.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/AppData/Local/Android/sdk/extras/android/m2repository/com/android/support/support-core-ui/25.3.0/support-core-ui-25.3.0-sources.jar!/android/support/v4/widget/SwipeRefreshLayout.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6859">
-              <caret line="410" column="16" selection-start-line="410" selection-start-column="16" selection-end-line="410" selection-end-column="16" />
+            <state relative-caret-position="386">
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -146,7 +158,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="779">
               <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1102#1103#0" expanded="false" />
+                <element signature="e#1165#1166#0" expanded="false" />
+                <element signature="e#1365#1366#0" expanded="false" />
+                <element signature="e#1405#1406#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -156,7 +174,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1197">
               <caret line="72" column="36" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#756#757#0" expanded="false" />
+                <element signature="e#791#792#0" expanded="false" />
+                <element signature="e#837#838#0" expanded="false" />
+                <element signature="e#876#877#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1974,7 +1998,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/jscore/function/appfun/CommonJCF.java" />
         <option value="$PROJECT_DIR$/app/src/main/assets/bundle2/index.html" />
         <option value="$PROJECT_DIR$/app/src/main/assets/bundle2/app.js" />
         <option value="$PROJECT_DIR$/app/src/main/assets/bundle1/app.js" />
@@ -2003,7 +2026,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/network/HttpManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tab_host.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/webview/MeWebViewFactory.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/WebViewActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
         <option value="$PROJECT_DIR$/app/src/main/assets/bundleDemoCommonJs/index.html" />
         <option value="$PROJECT_DIR$/app/src/main/assets/bundleDemoCommunication/index.html" />
@@ -2018,13 +2040,15 @@
         <option value="$PROJECT_DIR$/app/src/main/assets/bundleNavComment/index.html" />
         <option value="$PROJECT_DIR$/app/src/main/assets/bundleNavSetting/index.html" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/MEngineBundle.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/TabHostActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/webview/MeWebViewClient.java" />
         <option value="$PROJECT_DIR$/app/src/main/assets/bundleNavHome/index.html" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/util/ThreadManager.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/SplashActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/WebViewActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/SplashActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/TabHostActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/constant/MeConstant.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java" />
       </list>
     </option>
   </component>
@@ -2123,6 +2147,28 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="mengine" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MEngine" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mengine" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2641,61 +2687,103 @@
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/SplashActivity.java</url>
-          <line>79</line>
-          <properties />
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java</url>
-          <line>69</line>
-          <properties />
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java</url>
-          <line>102</line>
+          <line>100</line>
           <properties />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/WebViewActivity.java</url>
-          <line>24</line>
+          <line>25</line>
           <properties />
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java</url>
-          <line>93</line>
+          <line>91</line>
           <properties />
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/SplashActivity.java</url>
-          <line>69</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/TabHostActivity.java</url>
+          <line>37</line>
           <properties />
-          <option name="timeStamp" value="33" />
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/TabHostActivity.java</url>
+          <line>43</line>
+          <properties />
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/TabHostActivity.java</url>
+          <line>50</line>
+          <properties />
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java</url>
+          <line>66</line>
+          <properties />
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java</url>
+          <line>75</line>
+          <properties />
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java</url>
+          <line>72</line>
+          <properties />
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java</url>
+          <line>138</line>
+          <properties />
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java</url>
+          <line>144</line>
+          <properties />
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/SplashActivity.java</url>
+          <line>36</line>
+          <properties />
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/SplashActivity.java</url>
+          <line>87</line>
+          <properties />
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/SplashActivity.java</url>
+          <line>73</line>
+          <properties />
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="36" />
+      <option name="time" value="50" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/jscore/function/webviewfun/CommonJWF.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/util/MLog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
           <caret line="44" column="33" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2913,30 +3001,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/constant/MeConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/TabHostActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="64" column="46" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/WebViewActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/jscore/function/appfun/CommonJCF.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
@@ -2973,14 +3037,14 @@
         <state relative-caret-position="1102">
           <caret line="87" column="26" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="26" />
           <folding>
-            <element signature="e#2532#2533#0" expanded="true" />
-            <element signature="e#2561#2562#0" expanded="true" />
-            <element signature="e#2592#2593#0" expanded="true" />
-            <element signature="e#2621#2622#0" expanded="true" />
-            <element signature="e#2668#2669#0" expanded="true" />
-            <element signature="e#2698#2699#0" expanded="true" />
-            <element signature="e#3086#3087#0" expanded="true" />
-            <element signature="e#3146#3147#0" expanded="true" />
+            <element signature="e#2532#2533#0" expanded="false" />
+            <element signature="e#2561#2562#0" expanded="false" />
+            <element signature="e#2592#2593#0" expanded="false" />
+            <element signature="e#2621#2622#0" expanded="false" />
+            <element signature="e#2668#2669#0" expanded="false" />
+            <element signature="e#2698#2699#0" expanded="false" />
+            <element signature="e#3086#3087#0" expanded="false" />
+            <element signature="e#3146#3147#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3006,8 +3070,9 @@
         <state relative-caret-position="1311">
           <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
           <folding>
-            <element signature="e#1795#1796#0" expanded="true" />
-            <element signature="e#1848#1849#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1631#1632#0" expanded="false" />
+            <element signature="e#1685#1686#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3016,7 +3081,32 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6859">
           <caret line="410" column="16" selection-start-line="410" selection-start-column="16" selection-end-line="410" selection-end-column="16" />
-          <folding />
+          <folding>
+            <element signature="e#0#46489#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#9995#9996#0" expanded="false" />
+            <element signature="e#10036#10037#0" expanded="false" />
+            <element signature="e#10258#10259#0" expanded="false" />
+            <element signature="e#10298#10299#0" expanded="false" />
+            <element signature="e#12191#12192#0" expanded="false" />
+            <element signature="e#12226#12227#0" expanded="false" />
+            <element signature="e#14774#14775#0" expanded="false" />
+            <element signature="e#14810#14811#0" expanded="false" />
+            <element signature="e#14957#14958#0" expanded="false" />
+            <element signature="e#15017#15018#0" expanded="false" />
+            <element signature="e#20475#20476#0" expanded="false" />
+            <element signature="e#20522#20523#0" expanded="false" />
+            <element signature="e#21631#21632#0" expanded="false" />
+            <element signature="e#21665#21666#0" expanded="false" />
+            <element signature="e#22248#22249#0" expanded="false" />
+            <element signature="e#22293#22294#0" expanded="false" />
+            <element signature="e#24642#24643#0" expanded="false" />
+            <element signature="e#24680#24681#0" expanded="false" />
+            <element signature="e#30752#30753#0" expanded="false" />
+            <element signature="e#30825#30826#0" expanded="false" />
+            <element signature="e#32841#32842#0" expanded="false" />
+            <element signature="e#32903#32904#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3024,7 +3114,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1197">
           <caret line="72" column="36" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#756#757#0" expanded="false" />
+            <element signature="e#791#792#0" expanded="false" />
+            <element signature="e#837#838#0" expanded="false" />
+            <element signature="e#876#877#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3032,16 +3128,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="779">
           <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="169" column="29" selection-start-line="169" selection-start-column="29" selection-end-line="169" selection-end-column="29" />
           <folding>
-            <element signature="e#5977#6204#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1102#1103#0" expanded="false" />
+            <element signature="e#1165#1166#0" expanded="false" />
+            <element signature="e#1365#1366#0" expanded="false" />
+            <element signature="e#1405#1406#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3054,17 +3146,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/SplashActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="89" column="13" selection-start-line="89" selection-start-column="13" selection-end-line="89" selection-end-column="13" />
-          <folding>
-            <element signature="e#3164#3757#0" expanded="true" />
-            <element signature="e#3756#3757#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -3074,6 +3155,67 @@
       </provider>
       <provider editor-type-id="android-manifest">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/config/MEngineConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/WebViewActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/SplashActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="78" column="64" selection-start-line="78" selection-start-column="64" selection-end-line="78" selection-end-column="64" />
+          <folding>
+            <element signature="e#2148#2310#0" expanded="true" />
+            <element signature="e#2309#2310#0" expanded="true" />
+            <element signature="e#3144#3561#0" expanded="true" />
+            <element signature="e#3560#3561#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/activity/TabHostActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="57" column="72" selection-start-line="57" selection-start-column="72" selection-end-line="57" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/engine/constant/MeConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="24" column="67" selection-start-line="24" selection-start-column="67" selection-end-line="24" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hexleo/mengine/fragment/MeWebViewFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="132" column="42" selection-start-line="132" selection-start-column="42" selection-end-line="132" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3779#3935#0" expanded="true" />
+            <element signature="e#3934#3935#0" expanded="true" />
+            <element signature="e#5212#5433#0" expanded="true" />
+            <element signature="e#5432#5433#0" expanded="true" />
+            <element signature="e#6022#6249#0" expanded="true" />
+            <element signature="e#6248#6249#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
-import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
@@ -56,6 +55,7 @@ public class TabHostActivity extends BaseActivity {
             bundle.putString(MeConstant.INTENT_PARAM_BUNDLE, navPage.bundleName);
             bundle.putString(MeConstant.INTENT_PARAM_DATA, "");
             bundle.putBoolean(MeConstant.INTENT_PARAM_NEED_NAVBAR, false);
+            bundle.putBoolean(MeConstant.INTENT_PARAM_TABHOST_PAGE, true);
             addFragment(navPage.bundleName, MeWebViewFragment.class, navPage.navIcon, navPage.navName, bundle);
         }
     }
@@ -74,4 +74,5 @@ public class TabHostActivity extends BaseActivity {
         tv.setText(name);
         return view;
     }
+
 }
