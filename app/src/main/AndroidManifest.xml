@@ -18,7 +18,6 @@
         <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.hexleo.mengine.db.entity" />
 
         <activity android:name="com.hexleo.mengine.activity.SplashActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
