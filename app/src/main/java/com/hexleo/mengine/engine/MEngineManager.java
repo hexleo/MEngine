@@ -7,6 +7,8 @@ import com.hexleo.mengine.engine.webview.MeWebView;
 import com.hexleo.mengine.util.MLog;
 import com.hexleo.mengine.util.ThreadManager;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Created by hexleo on 2017/1/18.
  */
@@ -21,11 +23,12 @@ public class MEngineManager {
     private volatile boolean isInited; // 是否已经初始化
     private volatile boolean isTimeToStart;
     private MEnginePool mEnginePool;
-    private MEngine.InitCallBack mInitCallBack;
+    private WeakReference<MEngine.InitCallBack> mInitCallBack;
     private volatile int mInitWebViewCount; // 启动时需要初始化的网页数量
 
     private MEngineManager() {
         isInited = false;
+        mInitCallBack = new WeakReference<>(null);
     }
 
     public static MEngineManager getInstance() {
@@ -46,11 +49,11 @@ public class MEngineManager {
     // 在线程中初始化
     public void init(MEngine.InitCallBack initCallBack) {
         isInited = true;
-        mInitCallBack = initCallBack;
+        mInitCallBack = new WeakReference<>(initCallBack);
         // 获取配置文件
         MEngineConfig.getInstance().parseConfigJson(BaseApplication.getBaseApplication());
-        if (mInitCallBack != null) {
-            mInitCallBack.onConfigReady();
+        if (mInitCallBack.get() != null) {
+            mInitCallBack.get().onConfigReady();
         }
         prepareInitWebViewCallBack();
         mEnginePool = new MEnginePool(MEngineConfig.getInstance().getBundleConfigs());
@@ -85,9 +88,9 @@ public class MEngineManager {
                         }
                     }
                 }
-                if (mInitCallBack != null) {
+                if (mInitCallBack.get() != null) {
                     MLog.d(TAG, "onFinish");
-                    mInitCallBack.onFinish();
+                    mInitCallBack.get().onFinish();
                 }
             }
         });
