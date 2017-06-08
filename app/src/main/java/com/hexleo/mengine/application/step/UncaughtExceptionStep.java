@@ -26,7 +26,7 @@ public class UncaughtExceptionStep implements Step {
                 } else {
                     sb.append("\n" + e.getMessage());
                 }
-
+                MLog.e("UncaughtException",  sb.toString());
                 MLog.f("UncaughtException",  sb.toString());
             }
         });
