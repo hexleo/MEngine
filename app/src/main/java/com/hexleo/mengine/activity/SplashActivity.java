@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * 闪屏Activity 完成初始化工作才进行跳转
  */
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends BaseActivity implements MEngine.InitCallBack{
 
     private View root;
     private ImageView icon;
@@ -42,30 +42,29 @@ public class SplashActivity extends BaseActivity {
             startApp();
             return;
         }
-        // 初始化逻辑应该转移到Application中，这里只是暂时的
-        MEngine.initialize(new MEngine.InitCallBack() {
-            @Override
-            public void onConfigReady() {
-                MePageConfig.SplashPage splashPage = MEngineConfig.getInstance().getPageConfig().getSplashPage();
-                final Drawable iconDrawable = FileHelper.getAssetResDrawable(MeConstant.RES_PATH + splashPage.splashIcon, SplashActivity.this);
-                final int bgColor = splashPage.splashBgColor;
-                ThreadManager.mainPost(new Runnable() {
-                    @Override
-                    public void run() {
-                        root.setBackgroundColor(bgColor);
-                        icon.setImageDrawable(iconDrawable);
-                    }
-                });
-            }
+        MEngine.initialize(this);
+    }
 
+    @Override
+    public void onConfigReady() {
+        MePageConfig.SplashPage splashPage = MEngineConfig.getInstance().getPageConfig().getSplashPage();
+        final Drawable iconDrawable = FileHelper.getAssetResDrawable(MeConstant.RES_PATH + splashPage.splashIcon, SplashActivity.this);
+        final int bgColor = splashPage.splashBgColor;
+        ThreadManager.mainPost(new Runnable() {
             @Override
-            public void onFinish() {
-                ThreadManager.mainPost(new Runnable() {
-                    @Override
-                    public void run() {
-                        startApp();
-                    }
-                });
+            public void run() {
+                root.setBackgroundColor(bgColor);
+                icon.setImageDrawable(iconDrawable);
+            }
+        });
+    }
+
+    @Override
+    public void onFinish() {
+        ThreadManager.mainPost(new Runnable() {
+            @Override
+            public void run() {
+                startApp();
             }
         });
     }
