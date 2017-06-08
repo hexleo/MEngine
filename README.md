@@ -12,7 +12,8 @@
 * 多WebView且同时加载
 
 ps：目前仅支持Android
-![![![输入图片说明](https://static.oschina.net/uploads/img/201706/08210144_nebm.png "在这里输入图片标题")](https://static.oschina.net/uploads/img/201706/08210144_nebm.png "在这里输入图片标题")](https://static.oschina.net/uploads/img/201706/08210144_nebm.png "在这里输入图片标题")
+
+
 # 1 Hello World
 上手只用三分钟
 ### Step 1
@@ -69,10 +70,10 @@ ps：目前仅支持Android
 现在的目录结构如下
 ```
 ─┬config.json
-  ├res
-  │ └icon.png
-  └bundleHelloWorld
-     └index.html
+ ├res
+ │ └icon.png
+ └bundleHelloWorld
+   └index.html
 ```
 复制所有文件到到项目的app/src/main/assets目录下（先备份assets目录下文件，删除后覆盖在此目录下）
 
