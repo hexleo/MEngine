@@ -1,0 +1,27 @@
+{
+  "pageConfig":{
+    "splash":{
+      "splashIcon":"icon.png",
+      "splashBgColor":"#f5f5f5"
+    },
+    "nav":[
+      {
+        "bundleName":"bundleDemoHelloWorld",
+        "navIcon":"icon.png",
+        "navName":"首页"
+      }
+    ]
+  },
+  "globalConfig":{
+    "titleColor": "#000000",
+    "refreshColor": "#000000"
+  },
+  "bundleConfig":[
+    {
+      "bundleName":"bundleDemoHelloWorld",
+      "path":"bundleDemoHelloWorld",
+      "lazyInit":"false",
+      "enableRefresh":"true"
+    }
+  ]
+}

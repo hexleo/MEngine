@@ -1,0 +1,24 @@
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+</head>
+
+<body>
+    <h1>Hello World</h1>
+    <hr />
+    <div>
+        <p>下拉刷新页面</p>
+        <div id="result"></div>
+    </div>
+</body>
+<script>
+
+// app.js在线程中处理业务逻辑
+// 监听app.js返回的数据
+function receiveFromApp(data) {
+    resultElem = document.getElementById("result");
+    resultElem.innerHTML += decodeURIComponent(data) + "<br />";
+}
+
+</script>

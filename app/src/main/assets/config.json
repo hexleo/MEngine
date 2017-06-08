@@ -46,6 +46,13 @@
     "enableRefresh":"false"
     },
     {
+      "bundleName":"bundleDemoHelloWorld",
+      "path":"bundleDemoHelloWorld",
+      "title":"Hello World",
+      "lazyInit":"false",
+      "enableRefresh":"false"
+    },
+    {
       "bundleName":"bundleDemoIntroduction",
       "path":"bundleDemoIntroduction",
       "title":"项目介绍",
