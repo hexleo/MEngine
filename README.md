@@ -27,7 +27,7 @@ ps：目前仅支持Android
 
 ### Step 3
 创建res文件夹，并放入一张logo图片，如icon.png
-## Step 4
+### Step 4
 创建 config.json 文件（复制内容时请先删除注释）
 ```java
 {
