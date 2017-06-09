@@ -20,14 +20,15 @@ ps：目前仅支持Android
 创建文件夹，名称自定义（推荐以bundle开头），如：bundleHelloWorld
 
 每一个独立的页面属于一个bundle
-### Step 2
+
 在bundleHelloWorld中创建index.html文件，并写自己的HTML代码
 
 说明：每一个bundle文件夹包含index.html（当前bundle显示的页面），与app.js（在异步线程处理业务逻辑的js代码，不需要在index.html中声明，此文件可以不写）
 
-### Step 3
+### Step 2
 创建res文件夹，并放入一张logo图片，如icon.png
-### Step 4
+
+### Step 3
 创建 config.json 文件（复制内容时请先删除注释）
 ```java
 {
@@ -66,7 +67,7 @@ ps：目前仅支持Android
 }
 ```
 
-### Step 5
+### Step 4
 现在的目录结构如下
 ```
 ─┬config.json
@@ -77,8 +78,7 @@ ps：目前仅支持Android
 ```
 复制所有文件到到项目的app/src/main/assets目录下（先备份assets目录下文件，删除后覆盖在此目录下）
 
-### Step 6
-这个项目可以用Android Studio打开，最后编译运行OK。（这个作者比较懒，还没开发出自动打包工具）
+这个项目直接使用Android Studio打开，最后编译运行OK。（这个作者比较懒，还没开发出自动打包工具）
 
 项目提供了一个简单的HelloWorld可以直接运行，文件在DemoHelloWorld中，参考README.md里的说明运行。
 
