@@ -110,4 +110,5 @@ ps：本项目目前还处于初级阶段，以后还会引入更多的特性，
 
 # 4 开源地址
 GitHub https://github.com/hexleo/MEngine
+开源中国 https://git.oschina.net/hexleowang/MEngine
 
