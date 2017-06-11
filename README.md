@@ -109,6 +109,9 @@ ps：本项目目前还处于初级阶段，以后还会引入更多的特性，
 ![](https://hexleo.github.io/mengine/demo_index.png)
 
 # 4 开源地址
+欢迎大家关注此开源项目，以后还会有更多的新特性加入到此项目。
+
 GitHub https://github.com/hexleo/MEngine
+
 开源中国 https://git.oschina.net/hexleowang/MEngine
 
